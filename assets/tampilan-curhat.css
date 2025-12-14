@@ -1,0 +1,285 @@
+/* =========================================================================================================== */
+/* Desktop */
+/* =========================================================================================================== */
+
+@media (min-width: 1000px){
+
+/* Section wrapper */
+.curhat-section {
+  background-color: #7a0000;
+  color: #fff;
+  padding: 2rem 1rem;
+}
+
+/* Title */
+.curhat-title {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.curhat-title p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* Outer wrapper for scroll */
+.curhat-list-wrapper {
+  overflow-x: auto;
+  padding: 1rem;
+
+}
+
+/* Flex row scrollable */
+.curhat-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+
+/* Curhat Card */
+.curhat-card {
+  flex: 0 0 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.curhat-card:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+
+/* Card Header */
+.curhat-card-header {
+  background-color: yellow;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #222;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Card Body */
+.curhat-card-body {
+  background-color: white;
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+  min-height: 140px;
+  line-height: 1.5;
+  height: 300px;
+}
+
+.curhat-filter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+
+#filter:hover {
+    background-color: rgb(170, 70, 70);
+}
+
+#filter option {
+    background-color: #222  ;
+}
+
+.curhat-filter label {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.curhat-filter select {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+
+/* Scrollbar styling */
+.curhat-list-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.curhat-list-wrapper::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 4px;
+}
+.curhat-list-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.note {
+    background-color: #832121;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    margin: 30px 100px 0px 100px;
+    padding: 2rem 0rem;
+    border-radius: 1rem;
+}
+
+.note p {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 2rem;
+    margin: 0px 5rem;
+}
+
+}
+
+/* =========================================================================================================== */
+/* MOBILE */
+/* =========================================================================================================== */
+
+@media (min-width: 100px) and (max-width: 500px) {
+  /* Section wrapper */
+.curhat-section {
+  background-color: #7a0000;
+  color: #fff;
+  padding: 1rem 1rem;
+}
+
+/* Title */
+.curhat-title {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.curhat-title p {
+    font-size: 0.7rem;
+    font-weight: 400;
+}
+
+.curhat-list > p {
+  font-size: 8px;
+  color: yellow;
+}
+
+/* Outer wrapper for scroll */
+.curhat-list-wrapper {
+  overflow-x: auto;
+  padding: 0.5rem 1rem;
+}
+
+/* Flex row scrollable */
+.curhat-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+}
+
+
+/* Curhat Card */
+.curhat-card {
+  flex: 0 0 170px;
+  border-radius: 16px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  width: 200px;
+}
+
+
+
+/* Card Header */
+.curhat-card-header {
+  background-color: yellow;
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 0.6rem;
+  color: #222;
+  border-bottom: 1px solid #ccc;
+  width: 170px;
+}
+
+/* Card Body */
+.curhat-card-body {
+  background-color: white;
+  padding: 1rem;
+  font-size: 0.6rem;
+  color: #333;
+  min-height: 140px;
+  line-height: 1;
+  width: 170px;
+}
+
+.curhat-filter {
+  display: flex;
+  align-items: center;
+  padding: 0px 5px;
+  gap: 10px;
+}
+
+#filter:hover {
+    background-color: rgb(170, 70, 70);
+}
+
+#filter option {
+    background-color: #222  ;
+}
+
+.curhat-filter label {
+  font-weight: 500;
+  font-size: 0.6rem;
+}
+
+.curhat-filter select {
+  padding: 0.5rem 0.1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.6rem;
+  border: 1px solid black;
+}
+
+/* Scrollbar styling */
+.curhat-list-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.curhat-list-wrapper::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 4px;
+}
+.curhat-list-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.note {
+   margin-top: 10px;
+    background-color: #832121;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    padding: 1rem 0rem;
+    border-radius: 1rem;
+    font-size: 8px;
+}
+
+.note p {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 0.7rem;
+    margin: 0px 0.3rem;
+ }
+}

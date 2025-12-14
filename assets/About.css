@@ -1,0 +1,98 @@
+/* =========================================================================================================== */
+/* Desktop */
+/* =========================================================================================================== */
+
+@media (min-width: 1000px){
+    
+    .about-container {
+        background-color: rgba(0, 0, 0, 0.323);
+        border-radius: 20px;
+        margin: 50px 100px 0px 100px;
+        color: aliceblue;
+        padding: 20px;
+        flex: 1;
+    }
+
+    .about-judul {
+        color: aliceblue;
+        text-align: center;
+        font-size: 35px;
+        position:static;
+        display: flex;
+        justify-content: center;
+        margin: 0px;
+    }
+
+    .about-judul img{
+        width: 35%;
+    }
+
+    .about-content{
+        display: flex;
+        align-items: center;
+    }
+
+    .about-content1{
+        margin: 20px;
+    }
+
+    .about-content1 img{
+    width: 1500px;
+    height: auto;
+    }
+
+    .about-content2{
+        background-color: rgba(0, 0, 0, 0.323);
+        border-radius: 20px;
+        text-align: justify;
+        padding: 40px;
+        margin: 10px;
+    }
+
+    .about-content2 p{
+        line-height: 1.6;
+    }
+}
+
+/* =========================================================================================================== */
+/* MOBILE */
+/* =========================================================================================================== */
+
+@media (min-width: 100px) and (max-width: 500px) {
+    .about-container {
+        background-color: rgba(0, 0, 0, 0.323);
+        border-radius: 20px;
+        margin: 10px 10px 10px 10px;
+        color: aliceblue;
+        padding: 20px 10px;
+        font-size: 10px;
+    }
+
+    
+    .about-content1 img{    
+    display: none;
+    }
+
+    
+    .about-content2{
+        background-color: rgba(0, 0, 0, 0.323);
+        border-radius: 10px;
+        text-align: justify;
+        padding: 10px;
+        margin: 5px 0px;
+    }
+
+    .about-judul img{
+        width: 80%;
+    }
+
+     .about-judul {
+        color: aliceblue;
+        text-align: center;
+        font-size: 35px;
+        position:static;
+        display: flex;
+        justify-content: center;
+        margin: 0px;
+    }
+}

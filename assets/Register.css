@@ -1,0 +1,139 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin: 0px;
+    padding-top: 150px;
+  }
+
+/* Container */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #c1707010;
+    transition: all 1s ease;
+    max-width: 700px;
+  }
+
+.hr-regist {
+    margin: 10px;
+    width: 500px;
+    border-color: #ef4949;
+  }
+  
+  /* Title */
+  .register-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 25px;
+    
+  }
+  
+  /* Form */
+  .register-form {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .register-container:hover{
+    box-shadow: 0px 5px 15px #e77575;
+  }
+
+  .useremail {
+    margin-right: 30px;
+  }
+
+  .form-group {
+    margin: 30px 20px;
+  }
+  
+  .form-label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: white;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    color : white;
+  }
+  
+  .form-input:focus {
+    border-color: black;
+    outline: none;
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+  }
+  
+  /* Button */
+
+  .regist-regist {
+    display: flex;
+    justify-content: right;
+    margin-top: 40px
+  }
+
+  .submit-button {
+    padding: 5px 10px;
+    font-size: 1rem;
+    margin-right: 20px;
+    background: #c1707060;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    transition: 0.5s;
+    background: #c17070;
+    color: #000000;
+  }
+  
+  /* Message */
+  .message {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: green;
+    text-align: center;
+  }
+  
+
+  .error-message {
+  color: #ff0404;
+  background-color: #f0f006;
+  font-size: 14px;
+  margin: 10px 0;
+  text-align: center;
+  padding: 8px 15px;
+  border-radius: 10px;
+}
+
+.login-link {
+  margin-top: 50px;
+  font-size: 14px;
+  color: white;
+}
+
+.login-link-text {
+  color: #2378ae;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-link-text:hover {
+  text-decoration: underline;
+}

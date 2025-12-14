@@ -1,0 +1,816 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var mongodb_1 = require("mongodb");
+var dotenv = require("dotenv");
+var google_genai_1 = require("@langchain/google-genai");
+var mongodb_atlas_1 = require("@langchain/community/vectorstores/mongodb_atlas");
+dotenv.config();
+var MONGODB_URI = process.env.MONGODB_URI;
+var GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+var DB_NAME = "test";
+var COLLECTION_NAME = "penyakit_vector";
+function cleanText(text) {
+    return text.trim().toLowerCase().replace(/[^\w\s]/gi, "");
+}
+var QA_DATA = [
+    {
+        question: "Apa itu penyakit menular seksual?",
+        variants: ["apa itu penyakit menular seksual", "apa itu penyakit menular seksual?", "apa itu penyakit menular seksual?", "penyakit menular seksual?", "penyakit menular seksual itu apa"],
+        answer: "penyakit menular seksual adalah singkatan dari Penyakit Menular Seksual, yaitu infeksi yang menyebar terutama melalui hubungan seksual.",
+        formattedAnswer: "penyakit menular seksual adalah singkatan dari **Penyakit Menular Seksual**, yaitu infeksi yang menyebar melalui hubungan seksual.",
+    },
+    {
+        question: "apakah anda tau rumah sakit yang menangani penyakit menular seksual?",
+        answer: "**LME hanya bisa memberikan informasi untuk wilayah JABODETABEK saja!**\n\n- \uD83D\uDCCD Jakarta  \n- \uD83D\uDCCD Bogor  \n- \uD83D\uDCCD Depok  \n- \uD83D\uDCCD Tangerang  \n- \uD83D\uDCCD Bekasi\n          \nSilakan beritahu saya lokasi Anda agar bisa memberikan info yang lebih relevan.",
+    },
+    {
+        question: "Apa itu penyakit menular seksual?",
+        answer: "**Penyakit Menular Seksual (penyakit menular seksual)** adalah infeksi yang ditularkan melalui aktivitas seksual, termasuk hubungan vagina, anal, atau oral. Penyakit ini disebabkan oleh bakteri, virus, atau parasit."
+    },
+    {
+        question: "Apa itu penyakit menular seksual?",
+        answer: "**Penyakit Menular Seksual (penyakit menular seksual)** adalah infeksi yang ditularkan melalui aktivitas seksual, termasuk hubungan vagina, anal, atau oral. Penyakit ini disebabkan oleh bakteri, virus, atau parasit."
+    },
+    {
+        question: "penyakit seksual menular seksual?",
+        answer: "**Penyakit Menular Seksual (penyakit menular seksual)** adalah infeksi yang ditularkan melalui aktivitas seksual, termasuk hubungan vagina, anal, atau oral. Penyakit ini disebabkan oleh bakteri, virus, atau parasit."
+    },
+    {
+        question: "apa itu penyakit menular seksual?",
+        answer: "**Penyakit Menular Seksual (penyakit menular seksual)** adalah infeksi yang ditularkan melalui aktivitas seksual, termasuk hubungan vagina, anal, atau oral. Penyakit ini disebabkan oleh bakteri, virus, atau parasit."
+    },
+    {
+        question: "Apa saja contoh penyakit menular seksual?",
+        answer: "**Contoh penyakit menular seksual meliputi:**  \n- \u2714\uFE0F Gonore  \n- \u2714\uFE0F Sifilis  \n- \u2714\uFE0F Klamidia  \n- \u2714\uFE0F Herpes Genital  \n- \u2714\uFE0F HPV (Human Papillomavirus)  \n- \u2714\uFE0F HIV/AIDS  \n- \u2714\uFE0F Trikomoniasis  \n- \u2714\uFE0F Hepatitis B"
+    },
+    {
+        question: "Bagaimana cara penularan penyakit menular seksual?",
+        answer: "**penyakit menular seksual dapat ditularkan melalui:**  \n- \uD83D\uDE36 Hubungan seksual tanpa kondom  \n- \uD83E\uDD28 Kontak langsung dengan luka terbuka atau cairan tubuh  \n- \uD83D\uDE10 Penggunaan jarum suntik bersama  \n- \uD83E\uDD10 Dari ibu ke bayi selama kehamilan, persalinan, atau menyusui"
+    },
+    {
+        question: "Apakah semua penyakit menular seksual bisa disembuhkan?",
+        answer: "**Tidak semua penyakit menular seksual bisa disembuhkan.**  \n- \uD83D\uDC49 penyakit menular seksual yang disebabkan oleh bakteri (seperti gonore, sifilis, klamidia) bisa disembuhkan dengan antibiotik.  \n- \uD83D\uDC49 penyakit menular seksual yang disebabkan oleh virus (seperti HIV, herpes, HPV) **tidak bisa disembuhkan** tetapi bisa dikontrol dengan pengobatan."
+    },
+    {
+        question: "Apa perbedaan antara penyakit menular seksual dan HIV?",
+        answer: "**penyakit menular seksual** adalah istilah umum untuk semua penyakit yang ditularkan melalui hubungan seksual.  \n**HIV** adalah salah satu jenis penyakit menular seksual yang menyerang sistem kekebalan tubuh dan dapat berkembang menjadi AIDS jika tidak ditangani."
+    },
+    {
+        question: "Apakah penyakit menular seksual hanya ditularkan melalui hubungan seksual?",
+        answer: "**Tidak.** Meskipun penularan utama melalui hubungan seksual, beberapa penyakit menular seksual juga dapat menular melalui:  \n- \u274C Jarum suntik bersama  \n- \u274C Transfusi darah (jarang karena telah disaring)  \n- \u274C Dari ibu ke bayi saat melahirkan atau menyusui"
+    },
+    {
+        question: "Apakah ciuman bisa menularkan penyakit menular seksual?",
+        answer: "**Umumnya tidak,** tetapi penyakit menular seksual seperti herpes oral **bisa menular melalui ciuman** jika ada luka aktif di mulut.  \npenyakit menular seksual lain seperti HIV, gonore, atau klamidia tidak menular lewat ciuman."
+    },
+    {
+        question: "Apakah penyakit menular seksual bisa menular lewat toilet?",
+        answer: "**Tidak.** penyakit menular seksual tidak menyebar melalui dudukan toilet, bak mandi, atau alat makan bersama.  \nPenyebab penyakit menular seksual tidak bisa hidup lama di luar tubuh manusia."
+    },
+    {
+        question: "Siapa yang paling berisiko terkena penyakit menular seksual?",
+        answer: "**Siapa pun yang aktif secara seksual** berisiko terkena penyakit menular seksual, terutama jika:  \n- \u274C Sering berganti pasangan  \n- \u274C Tidak menggunakan kondom  \n- \u274C Tidak melakukan tes kesehatan secara rutin  \n- \u274C Melakukan seks bebas"
+    },
+    {
+        question: "Apakah penggunaan kondom 100% aman dari penyakit menular seksual?",
+        answer: "**Kondom sangat efektif** dalam mencegah penyakit menular seksual, tetapi tidak memberikan perlindungan 100%.  \nBeberapa penyakit menular seksual seperti herpes atau HPV dapat menular melalui kontak kulit di area yang tidak tertutup kondom."
+    },
+    {
+        question: "Apa saja gejala umum penyakit menular seksual pada pria?",
+        answer: "Gejala umum penyakit menular seksual pada pria dapat bervariasi tergantung jenis penyakitnya, namun secara umum meliputi:\n\n\u2705 Keluarnya cairan tidak normal dari penis\n\u2705 Rasa nyeri atau terbakar saat buang air kecil\n\u2705 Luka, lecet, atau bintik-bintik di area kelamin, anus, atau mulut\n\u2705 Gatal atau iritasi di area genital\n\u2705 Pembengkakan di testis atau area selangkangan\n\u2705 Nyeri saat berhubungan seksual"
+    },
+    {
+        question: "Apa saja gejala umum penyakit menular seksual pada wanita?",
+        answer: "Pada wanita, gejala penyakit menular seksual bisa lebih sulit dikenali. Beberapa tanda yang umum meliputi:\n\n\u2705 Keputihan tidak normal (berbau atau berubah warna)\n\u2705 Rasa nyeri atau terbakar saat buang air kecil\n\u2705 Luka, lecet, atau kutil di area kelamin, anus, atau mulut\n\u2705 Gatal atau iritasi di area vagina\n\u2705 Nyeri saat berhubungan seksual\n\u2705 Pendarahan di luar jadwal menstruasi"
+    },
+    {
+        question: "Apakah semua penyakit menular seksual menimbulkan gejala?",
+        answer: "\u274C Tidak. Banyak penyakit menular seksual, seperti klamidia atau HPV, bisa tidak menunjukkan gejala sama sekali, terutama pada tahap awal. Inilah mengapa pemeriksaan rutin sangat penting, meskipun tidak merasa sakit."
+    },
+    {
+        question: "Gejala penyakit menular seksual muncul berapa lama setelah terinfeksi?",
+        answer: "\u23F1\uFE0F Waktu munculnya gejala tergantung jenis penyakitnya:\n\n- Gonore & Klamidia: 1\u20133 minggu\n- Sifilis: 10\u201390 hari (rata-rata 21 hari)\n- Herpes Genital: 2\u201312 hari\n- HIV: 2\u20134 minggu (gejala seperti flu)\n\nNamun beberapa orang bisa tidak menunjukkan gejala sama sekali selama bertahun-tahun."
+    },
+    {
+        question: "Bagaimana cara mengetahui saya terkena penyakit menular seksual?",
+        answer: "\uD83D\uDD0D Satu-satunya cara pasti adalah dengan melakukan tes penyakit menular seksual. Jika kamu pernah melakukan aktivitas seksual berisiko, ada baiknya melakukan pemeriksaan rutin, terutama jika:\n\n\u2705 Memiliki pasangan seksual baru\n\u2705 Tidak menggunakan kondom\n\u2705 Mengalami gejala mencurigakan\n\u2705 Pernah didiagnosis penyakit menular seksual sebelumnya"
+    },
+    {
+        question: "Apakah saya perlu tes jika tidak ada gejala?",
+        answer: "\u2705 Ya. Banyak penyakit menular seksual tidak menunjukkan gejala di awal infeksi. Tes rutin tetap penting dilakukan, apalagi jika memiliki faktor risiko seperti:\n\n- Berganti pasangan seksual\n- Pernah berhubungan tanpa kondom\n- Pasangan pernah terdiagnosis penyakit menular seksual"
+    },
+    {
+        question: "Jenis tes apa yang digunakan untuk mendeteksi penyakit menular seksual?",
+        answer: "\uD83D\uDC89 Jenis tes tergantung penyakit yang dicurigai, antara lain:\n\n\u2705 Tes urine (untuk gonore, klamidia)\n\u2705 Tes darah (untuk HIV, sifilis, hepatitis B/C)\n\u2705 Tes swab (usap dari vagina, penis, anus, atau tenggorokan)\n\u2705 Pemeriksaan fisik langsung oleh dokter\n\nKonsultasikan dengan tenaga medis untuk menentukan jenis tes yang sesuai."
+    },
+    {
+        question: "Apa itu penyakit gonore?",
+        answer: "Gonore (kencing nanah) adalah penyakit menular seksual (penyakit menular seksual) yang disebabkan oleh bakteri *Neisseria gonorrhoeae*. Infeksi ini menyerang saluran reproduksi, tetapi juga bisa memengaruhi rektum, tenggorokan, dan mata.",
+        //: "Gonore"
+    },
+    {
+        question: "Bagaimana cara penularan gonore?",
+        answer: "Gonore menular melalui:\n\n\u2705 Hubungan seksual vaginal, anal, atau oral tanpa kondom\n\u2705 Kontak dengan cairan tubuh yang terinfeksi (seperti sperma atau cairan vagina)\n\u2705 Dari ibu hamil ke bayinya saat proses persalinan",
+        //: "Gonore"
+    },
+    {
+        question: "Apa gejala gonore pada pria?",
+        answer: "Gejala gonore pada pria biasanya muncul dalam 2\u20137 hari setelah terinfeksi:\n\n\u2705 Keluarnya cairan putih, kuning, atau hijau dari penis\n\u2705 Rasa nyeri atau terbakar saat buang air kecil\n\u2705 Pembengkakan atau nyeri pada testis\n\u2705 Rasa nyeri di tenggorokan jika terinfeksi melalui seks oral",
+        //: "Gonore"
+    },
+    {
+        question: "Apa gejala gonore pada wanita?",
+        answer: "Gejala gonore pada wanita sering kali ringan atau bahkan tidak terasa, tetapi bisa meliputi:\n\n\u2705 Keputihan tidak normal\n\u2705 Nyeri atau terbakar saat buang air kecil\n\u2705 Pendarahan di luar masa haid\n\u2705 Nyeri saat berhubungan seksual\n\u2705 Nyeri di perut bagian bawah",
+        //: "Gonore"
+    },
+    {
+        question: "Apakah gonore bisa menyebabkan kemandulan?",
+        answer: "\u2705 Ya. Jika tidak segera diobati, gonore dapat menyebabkan komplikasi serius seperti:\n\n- Penyakit radang panggul (PID) pada wanita, yang bisa merusak saluran reproduksi dan menyebabkan infertilitas\n- Epididimitis pada pria, yaitu peradangan saluran sperma yang bisa menyebabkan kemandulan",
+        //: "Gonore"
+    },
+    {
+        question: "Bagaimana cara mengobati gonore?",
+        answer: "\uD83D\uDC89 Gonore diobati dengan antibiotik, biasanya berupa:\n\n\u2705 Injeksi ceftriaxone\n\u2705 Kombinasi dengan antibiotik oral seperti azithromycin\n\n\u26A0\uFE0F Penting untuk menghindari hubungan seksual hingga dinyatakan sembuh dan pasangan juga ikut diobati.",
+        //: "Gonore"
+    },
+    {
+        question: "Apakah gonore bisa kambuh setelah sembuh?",
+        answer: "\u2705 Ya. Seseorang bisa terinfeksi kembali jika berhubungan dengan pasangan yang terinfeksi. Pengobatan hanya menyembuhkan infeksi saat itu, bukan memberikan kekebalan permanen.",
+        //: "Gonore"
+    },
+    {
+        question: "Apakah gonore bisa menular ke bayi saat melahirkan?",
+        answer: "\uD83D\uDC76 Ya. Ibu hamil yang menderita gonore bisa menularkan infeksi ke bayinya saat proses persalinan, terutama di area mata. Ini bisa menyebabkan infeksi mata serius bahkan kebutaan pada bayi.\n\n\uD83D\uDD0D Oleh karena itu, penting bagi ibu hamil untuk menjalani tes penyakit menular seksual saat kehamilan.",
+        //: "Gonore"
+    },
+    {
+        question: "Apa itu klamidia?",
+        answer: "Klamidia adalah penyakit menular seksual (penyakit menular seksual) yang disebabkan oleh bakteri *Chlamydia trachomatis*. Ini adalah salah satu penyakit menular seksual yang paling umum, terutama pada remaja dan dewasa muda. Klamidia bisa menyerang organ reproduksi, rektum, dan bahkan tenggorokan.",
+        //: "Klamidia"
+    },
+    {
+        question: "Apa perbedaan klamidia dan gonore?",
+        answer: "Keduanya adalah penyakit menular seksual yang disebabkan oleh bakteri dan memiliki gejala yang mirip. Perbedaannya:\n\n\uD83D\uDD2C **Penyebab**:\n- Klamidia: *Chlamydia trachomatis*\n- Gonore: *Neisseria gonorrhoeae*\n\n\uD83E\uDDEA **Respons terhadap antibiotik**: Gonore lebih berisiko terhadap resistansi obat.\n\n\uD83D\uDCC8 **Tingkat gejala**: Gonore lebih sering menimbulkan gejala dibanding klamidia.\n\n\uD83E\uDDCD\u200D\u2642\uFE0F\uD83E\uDDCD\u200D\u2640\uFE0F Keduanya bisa menyerang pria dan wanita, dan keduanya bisa muncul tanpa gejala.",
+        //: "Klamidia"
+    },
+    {
+        question: "Bagaimana gejala klamidia pada pria dan wanita?",
+        answer: "Gejala klamidia bisa berbeda antara pria dan wanita, namun banyak yang tidak mengalami gejala sama sekali.\n\n\uD83E\uDDCD\u200D\u2642\uFE0F **Pria**:\n\u2705 Keluarnya cairan dari penis\n\u2705 Rasa sakit atau terbakar saat buang air kecil\n\u2705 Nyeri atau bengkak di testis (jarang)\n\n\uD83E\uDDCD\u200D\u2640\uFE0F **Wanita**:\n\u2705 Keputihan tidak normal\n\u2705 Rasa terbakar saat buang air kecil\n\u2705 Nyeri saat berhubungan seksual\n\u2705 Pendarahan di luar menstruasi\n\u2705 Nyeri di perut bagian bawah",
+        //: "Klamidia"
+    },
+    {
+        question: "Apakah klamidia selalu menimbulkan gejala?",
+        answer: "\u274C Tidak. Sekitar 70\u201380% wanita dan 50% pria yang terinfeksi klamidia **tidak mengalami gejala apapun**. Itulah mengapa banyak orang tidak menyadari bahwa mereka sudah terinfeksi, dan bisa menularkan penyakit ini tanpa sadar.",
+        //: "Klamidia"
+    },
+    {
+        question: "Bagaimana cara mengetahui saya terkena klamidia?",
+        answer: "\uD83D\uDD0D Satu-satunya cara pasti untuk mengetahui adalah dengan melakukan tes laboratorium. Tes klamidia biasanya meliputi:\n\n\u2705 Tes urine\n\u2705 Swab dari serviks (wanita), uretra (pria), atau tenggorokan/rektum jika diperlukan\n\nTes ini aman, cepat, dan hasilnya biasanya keluar dalam beberapa hari.",
+        //: "Klamidia"
+    },
+    {
+        question: "Bagaimana pengobatan klamidia?",
+        answer: "\uD83D\uDC8A Klamidia **dapat disembuhkan** dengan antibiotik. Biasanya dokter akan meresepkan:\n\n\u2705 Dosis tunggal azitromisin ATAU\n\u2705 Doksisiklin selama 7 hari\n\n\uD83D\uDCCC Penting untuk tidak berhubungan seksual selama masa pengobatan dan memastikan pasangan juga ikut diperiksa dan diobati.",
+        //: "Klamidia"
+    },
+    {
+        question: "Apa bahaya klamidia jika tidak diobati?",
+        answer: "\u26A0\uFE0F Klamidia yang tidak diobati dapat menyebabkan komplikasi serius, seperti:\n\n\uD83E\uDDCD\u200D\u2640\uFE0F **Pada wanita**:\n\u2705 Penyakit radang panggul (PID)\n\u2705 Kehamilan ektopik (di luar rahim)\n\u2705 Kemandulan\n\n\uD83E\uDDCD\u200D\u2642\uFE0F **Pada pria**:\n\u2705 Epididimitis (radang saluran sperma)\n\u2705 Masalah kesuburan\n\n\uD83D\uDC76 Pada ibu hamil: Bisa menularkan ke bayi saat persalinan, menyebabkan infeksi mata atau paru-paru pada bayi.",
+        //: "Klamidia"
+    },
+    {
+        question: "Apa perbedaan HIV dan AIDS?",
+        answer: "HIV (Human Immunodeficiency Virus) adalah virus yang menyerang sistem kekebalan tubuh. AIDS (Acquired Immune Deficiency Syndrome) adalah tahap lanjut dari infeksi HIV, ketika sistem imun sangat lemah dan rentan terhadap infeksi atau penyakit lain. Tidak semua orang dengan HIV langsung mengalami AIDS.",
+        //: "HIV/AIDS"
+    },
+    {
+        question: "Bagaimana cara penularan HIV?",
+        answer: "HIV ditularkan melalui:\n\n\u2705 Hubungan seksual tanpa kondom (vaginal, anal, oral)\n\u2705 Transfusi darah yang terkontaminasi\n\u2705 Penggunaan jarum suntik bersama\n\u2705 Dari ibu ke bayi saat kehamilan, persalinan, atau menyusui\n\n\u274C HIV tidak menular melalui pelukan, berjabat tangan, atau berbagi makanan.",
+        //: "HIV/AIDS"
+    },
+    {
+        question: "Apakah HIV bisa menular lewat air liur?",
+        answer: "\u274C Tidak. HIV tidak menular melalui air liur, air mata, keringat, atau gigitan serangga. Virus ini hanya dapat menular melalui cairan tubuh seperti darah, air mani, cairan vagina, dan ASI.",
+        //: "HIV/AIDS"
+    },
+    {
+        question: "Apa saja gejala awal HIV?",
+        answer: "Gejala awal HIV bisa menyerupai flu biasa, biasanya muncul 2\u20134 minggu setelah terinfeksi:\n\n\u2705 Demam\n\u2705 Sakit kepala\n\u2705 Ruam\n\u2705 Nyeri otot dan sendi\n\u2705 Sakit tenggorokan\n\u2705 Pembengkakan kelenjar getah bening\n\nSetelah itu, HIV bisa tidak menimbulkan gejala selama bertahun-tahun.",
+        //: "HIV/AIDS"
+    },
+    {
+        question: "Bagaimana proses tes HIV dilakukan?",
+        answer: "\uD83D\uDC89 Tes HIV dilakukan dengan mengambil sampel darah atau cairan mulut. Ada beberapa jenis tes:\n\n\u2705 Tes antibodi: mendeteksi antibodi terhadap HIV\n\u2705 Tes antigen/antibodi: mendeteksi virus dan antibodi\n\u2705 Tes NAT (Nucleic Acid Test): mendeteksi virus secara langsung\n\nHasil bisa keluar dalam beberapa menit hingga beberapa hari, tergantung jenis tes.",
+        //: "HIV/AIDS"
+    },
+    {
+        question: "Apakah HIV bisa disembuhkan?",
+        answer: "\u274C Saat ini belum ada obat yang benar-benar menyembuhkan HIV. Namun, dengan pengobatan antiretroviral (ARV), penderita HIV bisa hidup sehat dan mencegah berkembangnya virus menjadi AIDS.",
+        //: "HIV/AIDS"
+    },
+    {
+        question: "Apakah orang dengan HIV bisa hidup normal?",
+        answer: "\u2705 Ya. Dengan pengobatan ARV yang tepat dan gaya hidup sehat, orang dengan HIV bisa hidup normal, bekerja, menikah, dan memiliki anak. Mereka juga bisa menjaga viral load tetap rendah (bahkan tidak terdeteksi), sehingga tidak menularkan ke orang lain.",
+        //: "HIV/AIDS"
+    },
+    {
+        question: "Apakah HIV bisa dicegah dengan kondom?",
+        answer: "\u2705 Ya. Menggunakan kondom secara konsisten dan benar sangat efektif untuk mencegah penularan HIV dan penyakit menular seksual lainnya.",
+        //: "HIV/AIDS"
+    },
+    {
+        question: "Apa itu PEP dan PrEP untuk HIV?",
+        answer: "\uD83D\uDC8A PEP (Post-Exposure Prophylaxis) adalah obat darurat untuk mencegah HIV setelah terpapar, harus diminum dalam waktu 72 jam.\n\n\uD83D\uDC8A PrEP (Pre-Exposure Prophylaxis) adalah obat yang diminum sebelum terpapar HIV untuk orang dengan risiko tinggi, misalnya memiliki pasangan dengan HIV.",
+        //: "HIV/AIDS"
+    },
+    {
+        question: "Apakah HIV bisa ditularkan dari ibu ke bayi?",
+        answer: "\u2705 Ya, HIV bisa ditularkan dari ibu ke bayi selama kehamilan, persalinan, atau menyusui. Namun, dengan pengobatan dan penanganan medis yang tepat, risiko penularannya bisa ditekan hingga hampir nol.",
+        //: "HIV/AIDS"
+    },
+    {
+        question: "Apa itu sifilis?",
+        answer: "Sifilis adalah penyakit menular seksual (penyakit menular seksual) yang disebabkan oleh bakteri *Treponema pallidum*. Penyakit ini dapat berkembang dalam beberapa tahap dan jika tidak diobati, bisa menyebabkan komplikasi serius pada organ tubuh, termasuk otak dan jantung.",
+
+    },
+    {
+        question: "Apa penyebab utama sifilis?",
+        answer: "Sifilis disebabkan oleh infeksi bakteri *Treponema pallidum*. Penularannya biasanya terjadi melalui kontak langsung dengan luka sifilis selama hubungan seksual vaginal, anal, atau oral.",
+
+    },
+    {
+        question: "Bagaimana cara penularan sifilis?",
+        answer: "\uD83D\uDD01 Sifilis dapat menular melalui:\n\n\u2705 Hubungan seksual (vaginal, anal, oral) dengan orang yang terinfeksi\n\u2705 Kontak langsung dengan luka atau ruam sifilis\n\u2705 Dari ibu ke bayi selama kehamilan atau saat melahirkan (sifilis kongenital)\n\n\u274C Tidak menular melalui toilet, peralatan makan, atau pakaian.",
+
+    },
+    {
+        question: "Apa saja tahapan sifilis?",
+        answer: "\uD83E\uDDE9 Sifilis berkembang melalui 4 tahap:\n\n1\uFE0F\u20E3 **Tahap Primer**: Luka kecil tanpa rasa sakit (chancre) di area kelamin, anus, atau mulut\n2\uFE0F\u20E3 **Tahap Sekunder**: Ruam kulit, demam, pembengkakan kelenjar getah bening\n3\uFE0F\u20E3 **Tahap Laten**: Tidak ada gejala, tetapi bakteri tetap ada dalam tubuh\n4\uFE0F\u20E3 **Tahap Tersier**: Komplikasi serius pada otak, jantung, dan organ lain (jika tidak diobati)",
+
+    },
+    {
+        question: "Seperti apa gejala sifilis pada awalnya?",
+        answer: "\uD83D\uDED1 Gejala awal sifilis biasanya berupa luka kecil (chancre) yang:\n\n\u2705 Tidak terasa sakit\n\u2705 Berbentuk bulat dan keras di tepinya\n\u2705 Muncul di penis, vagina, anus, atau mulut\n\nLuka ini bisa sembuh sendiri dalam beberapa minggu, tapi infeksi tetap menyebar bila tidak diobati.",
+
+    },
+    {
+        question: "Apa bahaya sifilis jika tidak ditangani?",
+        answer: "\u26A0\uFE0F Jika sifilis tidak diobati, dapat menyebabkan:\n\n\u274C Kerusakan otak dan sistem saraf (neurosifilis)\n\u274C Gangguan penglihatan atau kebutaan\n\u274C Masalah jantung dan pembuluh darah\n\u274C Kematian bayi dalam kandungan\n\u274C Komplikasi fatal pada organ tubuh lain",
+
+    },
+    {
+        question: "Apakah sifilis bisa disembuhkan?",
+        answer: "\u2705 Ya, sifilis bisa disembuhkan dengan antibiotik, terutama penisilin. Namun, pengobatan hanya bisa menghentikan perkembangan penyakit, bukan memperbaiki kerusakan organ yang sudah terjadi. Karena itu, penting untuk segera menjalani pemeriksaan dan pengobatan sejak dini.",
+
+    },
+    {
+        question: "Apakah sifilis bisa menular ke bayi dalam kandungan?",
+        answer: "\uD83D\uDC76 Ya. Ibu hamil yang terinfeksi sifilis bisa menularkan infeksi ke bayinya melalui plasenta. Ini disebut sifilis kongenital dan dapat menyebabkan:\n\n\u274C Keguguran atau kelahiran mati\n\u274C Bayi lahir dengan kerusakan organ serius\n\u274C Pertumbuhan terganggu atau kematian bayi setelah lahir\n\nTes sifilis pada ibu hamil sangat dianjurkan untuk pencegahan.",
+
+    },
+    {
+        question: "Apa itu vaginosis bakterial?",
+        answer: "Vaginosis bakterial (VB) adalah kondisi ketika terjadi ketidakseimbangan bakteri baik dan jahat di dalam vagina. Biasanya, bakteri baik seperti *lactobacillus* menurun dan bakteri jahat seperti *gardnerella* meningkat, menyebabkan gejala seperti keputihan dan bau tidak sedap.",
+        //: "Vaginosis Bakterial"
+    },
+    {
+        question: "Apakah vaginosis bakterial termasuk penyakit menular seksual?",
+        answer: "❌ Tidak. Vaginosis bakterial **bukan** penyakit menular seksual (penyakit menular seksual), tetapi bisa dipengaruhi oleh aktivitas seksual. VB lebih berkaitan dengan ketidakseimbangan flora bakteri alami di vagina.",
+        //: "Vaginosis Bakterial"
+    },
+    {
+        question: "Apa penyebab utama vaginosis bakterial?",
+        answer: "Penyebab utama vaginosis bakterial adalah ketidakseimbangan antara bakteri baik dan jahat di vagina. Faktor yang memicu:\n\n\u2705 Sering berganti pasangan seksual\n\u2705 Penggunaan sabun atau pembersih kewanitaan yang mengganggu pH\n\u2705 Penggunaan douche (semprot vagina)\n\u2705 Merokok\n\u2705 Kurangnya bakteri *lactobacillus* di vagina",
+        //: "Vaginosis Bakterial"
+    },
+    {
+        question: "Apa gejala vaginosis bakterial?",
+        answer: "Gejala yang umum dialami:\n\n\u2705 Keputihan berwarna abu-abu atau putih tipis\n\u2705 Bau amis yang menyengat, terutama setelah berhubungan\n\u2705 Rasa gatal ringan atau iritasi\n\u2705 Kadang disertai rasa terbakar saat buang air kecil\n\nNamun sebagian wanita bisa tidak mengalami gejala sama sekali.",
+        //: "Vaginosis Bakterial"
+    },
+    {
+        question: "Apa perbedaan vaginosis bakterial dan infeksi jamur?",
+        answer: "\uD83D\uDD0D Perbedaan utama:\n\n**Vaginosis Bakterial:**\n\u2705 Keputihan encer, abu-abu/putih\n\u2705 Bau amis menyengat\n\u2705 Sedikit atau tidak ada gatal\n\n**Infeksi Jamur (Kandidiasis):**\n\u2705 Keputihan kental seperti keju\n\u2705 Gatal intens di vagina\n\u2705 Tidak ada bau amis\n\nTes laboratorium bisa memastikan diagnosis.",
+        //: "Vaginosis Bakterial"
+    },
+    {
+        question: "Apakah vaginosis bakterial menular ke pasangan?",
+        answer: "⚠️ Vaginosis bakterial tidak dikategorikan sebagai penyakit menular seksual, tetapi aktivitas seksual dapat meningkatkan risikonya. Pada beberapa kasus, pasangan pria tidak memerlukan pengobatan, namun pada pasangan sesama jenis wanita, risiko penularan lebih tinggi.",
+        //: "Vaginosis Bakterial"
+    },
+    {
+        question: "Bagaimana cara mengobati vaginosis bakterial?",
+        answer: "\uD83D\uDC8A Pengobatan umumnya melibatkan:\n\n\u2705 Antibiotik oral (seperti metronidazole atau clindamycin)\n\u2705 Gel atau krim antibiotik yang dimasukkan ke dalam vagina\n\nTips tambahan:\n\n\uD83D\uDED1 Hindari penggunaan sabun/pembersih kewanitaan yang keras\n\u2705 Jaga kebersihan area intim dengan air bersih\n\u2705 Hindari douche (semprot vagina)\n\nKonsultasikan dengan dokter untuk pengobatan yang tepat.",
+        //: "Vaginosis Bakterial"
+    },
+    {
+        question: "Apa itu herpes genital?",
+        answer: "Herpes genital adalah penyakit menular seksual (penyakit menular seksual) yang disebabkan oleh virus herpes simpleks (HSV), biasanya tipe 2 (HSV-2), meskipun HSV-1 (penyebab herpes mulut) juga bisa menyebabkan infeksi genital melalui seks oral. Penyakit ini ditandai dengan munculnya luka melepuh di area kelamin, anus, atau mulut.",
+        //: "Herpes Genital"
+    },
+    {
+        question: "Apa penyebab herpes genital?",
+        answer: "Herpes genital disebabkan oleh infeksi virus **herpes simpleks (HSV)**. Ada dua tipe utama:\n\n- \u2705 **HSV-1**: Biasanya menyebabkan herpes mulut, tapi juga bisa menular ke area genital melalui seks oral.\n- \u2705 **HSV-2**: Lebih sering menyebabkan infeksi di area genital melalui kontak seksual langsung.",
+        //: "Herpes Genital"
+    },
+    {
+        question: "Apa gejala awal herpes genital?",
+        answer: "Gejala awal herpes genital biasanya muncul dalam 2\u201312 hari setelah terpapar virus, dan bisa berupa:\n\n\u2705 Luka melepuh atau lecet di area kelamin, anus, atau sekitar paha\n\u2705 Rasa nyeri atau terbakar saat buang air kecil\n\u2705 Demam, pegal-pegal, dan kelelahan\n\u2705 Pembengkakan kelenjar getah bening di selangkangan\n\nBeberapa orang tidak menyadari mereka terinfeksi karena gejalanya ringan atau tidak ada sama sekali.",
+        //: "Herpes Genital"
+    },
+    {
+        question: "Apakah herpes bisa sembuh total?",
+        answer: "\u274C Belum. Herpes tidak bisa sembuh total karena virus tetap \"bersembunyi\" di dalam tubuh (dormant) dan bisa kambuh sewaktu-waktu. Namun, dengan pengobatan antivirus:\n\n\u2705 Gejala bisa dikendalikan\n\u2705 Frekuensi kambuh bisa dikurangi\n\u2705 Risiko menularkan ke orang lain bisa ditekan",
+        //: "Herpes Genital"
+    },
+    {
+        question: "Apakah herpes bisa menular meskipun tidak ada luka?",
+        answer: "\u2705 Ya. Herpes tetap bisa menular meskipun tidak ada luka atau gejala. Ini disebut **penularan tanpa gejala (asymptomatic shedding)**. Virus bisa aktif di kulit tanpa terlihat oleh mata, sehingga penting menggunakan pengaman (seperti kondom) dan berkonsultasi dengan dokter untuk pengelolaan yang aman.",
+        //: "Herpes Genital"
+    },
+    {
+        question: "Apakah herpes berbahaya untuk ibu hamil?",
+        answer: "\u26A0\uFE0F Ya, herpes bisa berbahaya untuk ibu hamil, terutama jika infeksi pertama kali terjadi saat kehamilan. Risiko utamanya adalah penularan ke bayi saat proses persalinan, yang bisa menyebabkan **herpes neonatal**, kondisi serius yang mengancam nyawa bayi. Dokter biasanya menyarankan:\n\n\u2705 Pemeriksaan rutin\n\u2705 Pengobatan antivirus selama kehamilan\n\u2705 Persalinan caesar jika ada luka aktif menjelang kelahiran",
+        //: "Herpes Genital"
+    },
+    {
+        question: "Bagaimana cara mencegah herpes genital?",
+        answer: "Pencegahan herpes genital dapat dilakukan dengan:\n\n\u2705 Menggunakan kondom saat berhubungan seksual\n\u2705 Menghindari kontak seksual saat pasangan mengalami gejala herpes\n\u2705 Tidak berbagi alat pribadi (handuk, celana dalam)\n\u2705 Setia pada satu pasangan yang telah dites\n\u2705 Mengonsumsi obat antivirus jika kamu atau pasangan memiliki riwayat herpes\n\nIngat: Kondom membantu, tapi tidak 100% karena herpes bisa menular dari kulit yang tidak tertutup kondom.",
+        //: "Herpes Genital"
+    },
+    {
+        question: "Apa itu HPV?",
+        answer: "HPV (Human Papillomavirus) adalah kelompok virus yang terdiri dari lebih dari 100 jenis. Beberapa jenis HPV bisa menyebabkan kutil kelamin, sementara jenis lainnya berisiko tinggi menyebabkan kanker, terutama kanker serviks, anus, tenggorokan, dan penis.",
+        //: "HPV"
+    },
+    {
+        question: "Apakah HPV bisa menyebabkan kanker?",
+        answer: "✅ Ya. Beberapa jenis HPV tergolong risiko tinggi dan bisa menyebabkan kanker, terutama:\n\n- Kanker serviks (paling umum)\n- Kanker anus\n- Kanker penis\n- Kanker tenggorokan dan mulut\n\nHPV jenis 16 dan 18 adalah penyebab utama kanker serviks.",
+        //: "HPV"
+    },
+    {
+        question: "Apa itu kutil kelamin?",
+        answer: "Kutil kelamin adalah benjolan kecil atau kelompok benjolan di area kelamin, anus, atau sekitar mulut, yang disebabkan oleh infeksi HPV. Mereka bisa tampak seperti:\n\n✅ Daging tumbuh kecil berwarna kulit atau kemerahan\n✅ Halus atau kasar seperti kembang kol\n✅ Bisa gatal, tapi biasanya tidak nyeri",
+        //: "HPV"
+    },
+    {
+        question: "Bagaimana penularan HPV terjadi?",
+        answer: "🔄 HPV menular melalui:\n\n✅ Hubungan seksual vaginal, anal, maupun oral\n✅ Kontak kulit ke kulit di area genital, bahkan tanpa penetrasi\n✅ Dari ibu ke bayi saat melahirkan (jarang)\n\nPenggunaan kondom dapat mengurangi risiko, tapi tidak sepenuhnya mencegah karena virus bisa menular lewat kulit di sekitar alat kelamin.",
+        //: "HPV"
+    },
+    {
+        question: "Apakah semua orang dengan HPV mengalami gejala?",
+        answer: "❌ Tidak. Sebagian besar infeksi HPV tidak menimbulkan gejala dan bisa hilang sendiri dalam 1–2 tahun. Namun, beberapa jenis HPV bisa menetap dan menyebabkan:\n\n- Kutil kelamin\n- Perubahan sel serviks (yang bisa berkembang menjadi kanker)",
+        //: "HPV"
+    },
+    {
+        question: "Apakah ada tes untuk mendeteksi HPV?",
+        answer: "✅ Ya, ada tes khusus HPV, biasanya dilakukan bersama dengan tes Pap smear:\n\n🔬 Tes HPV: mendeteksi DNA virus HPV pada leher rahim (hanya untuk wanita)\n🧪 Tes Pap smear: mendeteksi perubahan sel serviks akibat HPV\n\nSaat ini belum tersedia tes HPV yang umum digunakan untuk pria.",
+        //: "HPV"
+    },
+    {
+        question: "Apakah vaksin HPV perlu diberikan untuk laki-laki?",
+        answer: "✅ Ya. Vaksin HPV disarankan juga untuk laki-laki karena dapat:\n\n- Mencegah kutil kelamin\n- Menurunkan risiko kanker penis, anus, dan tenggorokan\n- Membantu mencegah penyebaran virus ke pasangan seksual\n\nWHO dan CDC menyarankan vaksinasi baik untuk pria maupun wanita.",
+        //: "HPV"
+    },
+    {
+        question: "Umur berapa sebaiknya seseorang mendapat vaksin HPV?",
+        answer: "💉 Vaksin HPV paling efektif diberikan pada usia:\n\n✅ 9–14 tahun (ideal sebelum aktif secara seksual)\n✅ Bisa diberikan hingga usia 26 tahun\n✅ Pada beberapa kasus, bisa dipertimbangkan hingga usia 45 tahun (konsultasi dengan dokter)\n\nSemakin dini vaksin diberikan, semakin baik efektivitasnya.",
+        //: "HPV"
+    },
+    {
+        question: "Apa itu infeksi jamur (candidiasis)?",
+        answer: "Infeksi yang disebabkan pertumbuhan berlebih jamur Candida, terutama Candida albicans.",
+        //: "Infeksi Jamur"
+    },
+    {
+        question: "Apa gejala infeksi jamur pada area genital?",
+        answer: "\n🔹 Gatal atau iritasi \n🔹 Keputihan kental & putih (seperti keju cottage) \n🔹 Kemerahan/bengkak \n🔹 Nyeri saat berhubungan atau buang air kecil",
+        //: "Infeksi Jamur"
+    },
+    {
+        question: "Apakah infeksi jamur termasuk penyakit menular seksual?",
+        answer: "Tidak, infeksi jamur bukan Penyakit Menular Seksual (penyakit menular seksual), tapi bisa dipicu oleh hubungan seksual.",
+        //: "Infeksi Jamur"
+    },
+    {
+        question: "Apa penyebab infeksi jamur?",
+        answer: "\n🔹 Ketidakseimbangan flora vagina (pH) \n🔹 Antibiotik \n🔹 Hormon (kehamilan, pil KB) \n🔹 Sistem imun lemah \n🔹 Diabetes tidak terkontrol",
+        //: "Infeksi Jamur"
+    },
+    {
+        question: "Bagaimana membedakan infeksi jamur dan bakteri?",
+        answer: "\n🔸 Infeksi jamur: Keputihan putih & kental, gatal. \n🔸 Infeksi bakteri: Keputihan encer, abu-abu/kuning, bau amis.",
+        //: "Infeksi Jamur"
+    },
+    {
+        question: "Bagaimana pengobatan infeksi jamur?",
+        answer: "\n🔹 Krim/kapsul antijamur (contoh: klotrimazol, mikonazol) \n🔹 Obat oral (contoh: flukonazol) \n🔹 Jaga kebersihan & hindari pakaian ketat.",
+        //: "Infeksi Jamur"
+    },
+    {
+        question: "Apakah infeksi jamur bisa menular melalui hubungan seksual?",
+        answer: "Bisa, tapi tidak selalu. Pria bisa terkena ruam/gatal, namun umumnya bukan infeksi serius.",
+        //: "Infeksi Jamur"
+    },
+    {
+        question: "Apa itu trikomoniasis?",
+        answer: "Trikomoniasis adalah infeksi menular seksual yang disebabkan oleh parasit protozoa bernama *Trichomonas vaginalis*. Infeksi ini umum terjadi dan sering kali tidak menimbulkan gejala, terutama pada pria.",
+        //: "Trikomoniasis"
+    },
+    {
+        question: "Apa penyebab utama trikomoniasis?",
+        answer: "Trikomoniasis disebabkan oleh penularan parasit *Trichomonas vaginalis*, biasanya melalui hubungan seksual tanpa kondom dengan orang yang terinfeksi. Parasit ini hidup di saluran kemih atau genital.",
+        //: "Trikomoniasis"
+    },
+    {
+        question: "Apa gejala trikomoniasis pada pria dan wanita?",
+        answer: "Gejala trikomoniasis bisa berbeda pada pria dan wanita:\n\n\uD83D\uDC69 **Wanita**:\n\u2705 Keputihan berbusa berwarna kuning kehijauan\n\u2705 Bau tidak sedap\n\u2705 Gatal atau iritasi pada vagina\n\u2705 Rasa nyeri saat buang air kecil atau berhubungan seksual\n\n\uD83D\uDC68 **Pria**:\n\u2705 Keluarnya cairan dari penis\n\u2705 Rasa terbakar setelah buang air kecil atau ejakulasi\n\u2705 Iritasi ringan atau tidak ada gejala sama sekali",
+        //: "Trikomoniasis"
+    },
+    {
+        question: "Apakah trikomoniasis bisa menyebabkan komplikasi?",
+        answer: "\u26A0\uFE0F Ya. Jika tidak diobati, trikomoniasis dapat meningkatkan risiko:\n\n- Terinfeksi atau menularkan HIV\n- Kelahiran prematur atau berat badan bayi rendah pada ibu hamil\n- Radang saluran kemih atau kelamin\n\nOleh karena itu, penting untuk mendeteksi dan mengobatinya sesegera mungkin.",
+        //: "Trikomoniasis"
+    },
+    {
+        question: "Bagaimana cara mendeteksi trikomoniasis?",
+        answer: "\uD83D\uDD0D Trikomoniasis dapat dideteksi melalui:\n\n\u2705 Pemeriksaan mikroskopis cairan vagina atau uretra\n\u2705 Kultur parasit\n\u2705 Tes antigen atau PCR (lebih akurat)\n\nPemeriksaan bisa dilakukan di klinik kesehatan atau laboratorium.",
+        //: "Trikomoniasis"
+    },
+    {
+        question: "Apakah trikomoniasis bisa disembuhkan?",
+        answer: "\u2705 Ya, trikomoniasis bisa disembuhkan dengan antibiotik, biasanya metronidazole atau tinidazole. Pasangan seksual juga harus diobati meskipun tidak memiliki gejala, untuk mencegah infeksi ulang.",
+        //: "Trikomoniasis"
+    },
+    {
+        question: "Apakah trikomoniasis bisa kambuh?",
+        answer: "\uD83D\uDD01 Ya, trikomoniasis bisa kambuh jika:\n\n- Pasangan tidak ikut diobati\n- Tidak menyelesaikan pengobatan sesuai resep\n- Terinfeksi kembali dari pasangan lain yang terinfeksi\n\nPenting untuk tes ulang sekitar 3 bulan setelah pengobatan selesai.",
+        //: "Trikomoniasis"
+    },
+    {
+        question: "Bagaimana cara mengobati penyakit menular seksual?",
+        answer: "Pengobatan penyakit menular seksual (penyakit menular seksual) tergantung pada jenis infeksi yang diderita. Beberapa penyakit menular seksual dapat disembuhkan dengan antibiotik, sementara lainnya memerlukan perawatan jangka panjang. Umumnya, langkah-langkah pengobatan meliputi:\n\n\uD83D\uDD39 Konsultasi ke dokter atau klinik kesehatan seksual  \n\uD83D\uDD39 Melakukan tes untuk memastikan jenis penyakit menular seksual  \n\uD83D\uDD39 Mengikuti resep obat dari dokter (seperti antibiotik atau antivirus)  \n\uD83D\uDD39 Menyelesaikan seluruh dosis obat meskipun gejala sudah hilang  \n\uD83D\uDD39 Tidak berhubungan seksual hingga pengobatan selesai dan dinyatakan sembuh"
+    },
+    {
+        question: "Apakah penyakit menular seksual bisa sembuh sendiri?",
+        answer: "Tidak semua penyakit menular seksual bisa sembuh sendiri. Beberapa infeksi seperti klamidia atau gonore bisa memburuk jika tidak diobati. Bahkan penyakit menular seksual yang tampak sembuh bisa tetap aktif di dalam tubuh dan menimbulkan komplikasi serius seperti:\n\n\u26A0\uFE0F Infertilitas  \n\u26A0\uFE0F Infeksi panggul  \n\u26A0\uFE0F Risiko penularan ke orang lain  \n\u26A0\uFE0F Penyakit kronis seperti HIV\n\nOleh karena itu, penting untuk segera memeriksakan diri dan mendapatkan pengobatan yang tepat."
+    },
+    {
+        question: "Apakah saya bisa membeli obat penyakit menular seksual tanpa resep?",
+        answer: "Beberapa obat untuk mengatasi gejala penyakit menular seksual tersedia bebas, namun **pengobatan utama untuk penyakit menular seksual memerlukan diagnosis dan resep dari dokter**. Mengobati sendiri tanpa mengetahui jenis infeksinya bisa menyebabkan:\n\n\u274C Penyakit tidak sembuh  \n\u274C Efek samping obat yang salah  \n\u274C Penyebaran infeksi ke orang lain\n\nSelalu konsultasikan ke tenaga medis profesional sebelum membeli atau mengonsumsi obat penyakit menular seksual."
+    },
+    {
+        question: "Apakah penyakit menular seksual bisa sembuh total?",
+        answer: "Beberapa penyakit menular seksual bisa sembuh total, terutama yang disebabkan oleh bakteri seperti:\n\n\u2705 Klamidia  \n\u2705 Gonore  \n\u2705 Sifilis (jika ditangani sejak dini)\n\nNamun, ada juga penyakit menular seksual yang tidak bisa sembuh total tetapi dapat dikontrol, seperti:\n\n\uD83D\uDD38 HIV  \n\uD83D\uDD38 Herpes genital  \n\uD83D\uDD38 HPV\n\nPengobatan dan manajemen jangka panjang dapat membantu penderita hidup sehat dan menurunkan risiko penularan."
+    },
+    {
+        question: "Apakah saya harus berhenti berhubungan seksual selama pengobatan?",
+        answer: "Ya, **sangat disarankan untuk tidak berhubungan seksual selama proses pengobatan penyakit menular seksual**. Hal ini untuk mencegah:\n\n\uD83D\uDEAB Penularan ke pasangan  \n\uD83D\uDEAB Infeksi ulang (reinfection)  \n\uD83D\uDEAB Gangguan proses penyembuhan\n\nTunggulah hingga dinyatakan sembuh oleh dokter sebelum kembali berhubungan seksual."
+    },
+    {
+        question: "Bagaimana cara mencegah tertular penyakit menular seksual?",
+        answer: "🔹 Gunakan kondom setiap berhubungan seks\n🔹 Hindari berganti pasangan\n🔹 Rutin tes penyakit menular seksual bersama pasangan\n🔹 Jaga kebersihan alat kelamin"
+    },
+    {
+        question: "Apakah vaksin bisa mencegah penyakit menular seksual?",
+        answer: "✅ Ya, tapi hanya untuk jenis tertentu (contoh: HPV dan Hepatitis B). Tidak semua penyakit menular seksual bisa dicegah dengan vaksin."
+    },
+    {
+        question: "Seberapa efektif kondom dalam mencegah penyakit menular seksual?",
+        answer: "⚡ Efektifitas 98% jika digunakan dengan benar. Namun tidak 100% aman karena bisa robek atau terlepas."
+    },
+    {
+        question: "Apakah saya masih bisa tertular meskipun pasangan saya tidak punya gejala?",
+        answer: "⚠️ YA! Banyak penyakit menular seksual yang tidak menunjukkan gejala (asimtomatik) tapi tetap menular."
+    },
+    {
+        question: "Apakah saya perlu rutin tes penyakit menular seksual jika tidak berganti pasangan?",
+        answer: "🔍 Disarankan, terutama jika:\n- Pasangan punya riwayat penyakit menular seksual\n- Ada gejala tidak biasa\n- Sebelum menikah/hamil\n- Setiap 6-12 bulan untuk skrining rutin"
+    },
+    {
+        question: "Apakah penyakit menular seksual bisa memengaruhi kehamilan?",
+        answer: "Ya, beberapa jenis penyakit menular seksual dapat memengaruhi kehamilan dan membahayakan ibu maupun janin. Infeksi seperti sifilis, klamidia, dan gonore dapat menyebabkan komplikasi seperti:\n\n🔹 Keguguran\n🔹 Kelahiran prematur\n🔹 Infeksi pada bayi saat persalinan\n🔹 Berat badan lahir rendah"
+    },
+    {
+        question: "Apakah penyakit menular seksual bisa ditularkan ke bayi?",
+        answer: "Ya, beberapa penyakit menular seksual bisa ditularkan dari ibu ke bayi selama kehamilan, saat persalinan, atau melalui ASI. Penularan ini disebut juga transmisi vertikal. Contohnya:\n\n🔹 HIV\n🔹 Sifilis\n🔹 Hepatitis B\n🔹 Herpes simpleks\n🔹 Klamidia dan gonore (saat lahir melalui jalan lahir)"
+    },
+    {
+        question: "Apakah ibu hamil bisa melakukan pengobatan penyakit menular seksual?",
+        answer: "Bisa. Banyak jenis penyakit menular seksual dapat diobati selama kehamilan dengan obat yang aman untuk ibu dan janin. Sangat penting untuk segera berkonsultasi ke dokter agar mendapatkan penanganan yang tepat dan mencegah komplikasi pada bayi."
+    },
+    {
+        question: "Apakah wanita hamil harus tes penyakit menular seksual?",
+        answer: "Ya, tes penyakit menular seksual sangat dianjurkan bagi wanita hamil, terutama pada trimester pertama. Ini penting untuk:\n\n🔹 Mengetahui infeksi sejak dini\n🔹 Mencegah penularan ke janin\n🔹 Memberikan pengobatan lebih cepat\n\nPemeriksaan biasanya mencakup HIV, sifilis, hepatitis B, dan klamidia."
+    },
+    {
+        question: "Bagaimana cara memberi tahu pasangan bahwa saya punya penyakit menular seksual?",
+        answer: "💬 Komunikasikan dengan jujur dan terbuka, pilih waktu yang tepat, siapkan informasi tentang penyakit menular seksual, dan tawarkan solusi bersama."
+    },
+    {
+        question: "Apakah saya tetap bisa menikah jika punya HIV?",
+        answer: "✅ Ya, dengan pengobatan ARV yang tepat, risiko penularan bisa diminimalkan. Penting untuk diskusi terbuka dengan pasangan dan dokter."
+    },
+    {
+        question: "Bagaimana cara menjelaskan ke pasangan soal pentingnya tes penyakit menular seksual?",
+        answer: "📢 Tekankan bahwa tes penyakit menular seksual adalah: \n- 🛡️ Bentuk perlindungan bersama \n- ❤️ Bukti komitmen pada kesehatan pasangan \n- 🔍 Deteksi dini = pengobatan lebih mudah"
+    },
+    {
+        question: "Apakah remaja juga bisa terkena penyakit menular seksual?",
+        answer: "Ya, remaja (terutama perempuan) bisa mengalami penyakit menular seksual (Pre-Menstrual Syndrome) setelah mulai menstruasi. 🩸"
+    },
+    {
+        question: "Apakah penting memberikan edukasi penyakit menular seksual sejak usia muda?",
+        answer: "Sangat penting! Edukasi dini membantu remaja: 💡\n- Memahami perubahan tubuh\n- Mengelola gejala dengan baik\n- Menghindari mitos/miskonsepsi\n- Mempersiapkan diri secara mental"
+    },
+    {
+        question: "Bagaimana cara menjelaskan penyakit menular seksual kepada anak remaja?",
+        answer: "Gunakan pendekatan sederhana dan empati: 🌸\n1. Jelaskan bahwa penyakit menular seksual wajar terjadi sebelum menstruasi\n2. Sebut gejala umum (mood swing, kram)\n3. Tekankan bahwa ini bukan penyakit\n4. Ajarkan cara meredakan gejala (istirahat, kompres hangat)\n5. Dorong untuk konsultasi jika gejala berat"
+    },
+    {
+        question: "Apakah penyakit menular seksual hanya bisa menular lewat seks bebas?",
+        answer: "Tidak. penyakit menular seksual bisa menular melalui berbagai jenis aktivitas seksual, termasuk:\n    \n\uD83D\uDD39 Hubungan seksual dengan pasangan tetap yang terinfeksi  \n\uD83D\uDD39 Seks oral atau anal  \n\uD83D\uDD39 Berbagi jarum suntik  \n\uD83D\uDD39 Dari ibu ke bayi saat melahirkan atau menyusui\n\nJadi, tidak hanya seks bebas yang berisiko menularkan penyakit menular seksual."
+    },
+    {
+        question: "Apakah orang yang tampak sehat pasti bebas dari penyakit menular seksual?",
+        answer: "Tidak. Banyak orang dengan penyakit menular seksual tidak menunjukkan gejala apa pun, terutama di tahap awal. Mereka bisa terlihat sehat tetapi tetap bisa menularkan penyakitnya. Oleh karena itu, tes rutin sangat penting untuk mengetahui status kesehatan seksual."
+    },
+    {
+        question: "Apakah penyakit menular seksual hanya dialami oleh pekerja seks?",
+        answer: "Tidak. Siapa pun yang aktif secara seksual bisa terkena penyakit menular seksual, tidak peduli status sosial, profesi, atau jumlah pasangan. Risiko meningkat jika:\n\n\uD83D\uDD39 Tidak menggunakan kondom  \n\uD83D\uDD39 Sering berganti pasangan  \n\uD83D\uDD39 Tidak pernah tes penyakit menular seksual  \n\uD83D\uDD39 Berhubungan seksual dengan orang yang tidak diketahui status kesehatannya\n\nJadi, penyakit menular seksual bukan hanya masalah pekerja seks, tapi bisa dialami oleh siapa saja."
+    },
+    {
+        question: "Apakah pria tidak perlu khawatir soal penyakit menular seksual?",
+        answer: "Pria tetap perlu waspada terhadap penyakit menular seksual. Meski gejalanya bisa lebih ringan atau tidak terasa, pria tetap bisa:\n\n\uD83D\uDD39 Menularkan penyakit menular seksual ke pasangan  \n\uD83D\uDD39 Mengalami komplikasi kesehatan (misalnya infertilitas, nyeri, atau infeksi lainnya)  \n\uD83D\uDD39 Membawa virus tanpa sadar\n\nPemeriksaan rutin dan edukasi sangat penting untuk pria juga."
+    },
+    {
+        question: "Apa itu penyakit menular seksual (penyakit menular seksual)?",
+        answer: "Penyakit menular seksual (penyakit menular seksual) adalah infeksi yang ditularkan melalui hubungan seksual, termasuk hubungan vaginal, anal, dan oral. penyakit menular seksual dapat disebabkan oleh bakteri, virus, atau parasit."
+    },
+    {
+        question: "Apa saja jenis-jenis penyakit menular seksual yang umum terjadi?",
+        answer: "Jenis-jenis penyakit menular seksual yang umum meliputi HIV/AIDS, sifilis, gonore, klamidia, herpes genital, HPV, dan trikomoniasis."
+    },
+    {
+        question: "apa saja jenis-jenis penyakit menular seksual yang umum terjadi?",
+        answer: "Jenis-jenis penyakit menular seksual yang umum meliputi HIV/AIDS, sifilis, gonore, klamidia, herpes genital, HPV, dan trikomoniasis."
+    },
+    {
+        question: "jenis-jenis penyakit menular seksual",
+        answer: "Jenis-jenis penyakit menular seksual yang umum meliputi HIV/AIDS, sifilis, gonore, klamidia, herpes genital, HPV, dan trikomoniasis."
+    },
+    {
+        question: "jenis-jenis penyakit menular seksual apa saja?",
+        answer: "Jenis-jenis penyakit menular seksual yang umum meliputi HIV/AIDS, sifilis, gonore, klamidia, herpes genital, HPV, dan trikomoniasis."
+    },
+    {
+        question: "Bagaimana cara penularan penyakit menular seksual?",
+        answer: "penyakit menular seksual dapat ditularkan melalui hubungan seksual tanpa kondom, penggunaan jarum suntik yang tidak steril, transfusi darah yang terkontaminasi, atau dari ibu ke bayi selama kehamilan atau persalinan."
+    },
+    {
+        question: "Apa gejala umum penyakit menular seksual?",
+        answer: "Gejalanya bervariasi tergantung jenis penyakit menular seksual, namun gejala umum meliputi nyeri saat buang air kecil, keputihan yang tidak normal, luka atau lepuhan di area genital, gatal atau iritasi, dan pembengkakan kelenjar getah bening."
+    },
+    {
+        question: "Bisakah penyakit menular seksual tidak menunjukkan gejala?",
+        answer: "Ya, beberapa penyakit menular seksual seperti klamidia dan HPV sering kali tidak menunjukkan gejala, sehingga seseorang bisa menularkannya tanpa menyadarinya."
+    },
+    {
+        question: "Bagaimana cara mencegah penyakit menular seksual?",
+        answer: "Pencegahan penyakit menular seksual dapat dilakukan dengan menggunakan kondom saat berhubungan seksual, setia pada satu pasangan, tidak berbagi jarum suntik, dan menjalani tes penyakit menular seksual secara rutin."
+    },
+    {
+        question: "Apakah semua penyakit menular seksual bisa disembuhkan?",
+        answer: "penyakit menular seksual yang disebabkan oleh bakteri seperti klamidia, gonore, dan sifilis bisa disembuhkan dengan antibiotik. Namun penyakit menular seksual yang disebabkan oleh virus seperti HIV dan herpes tidak bisa disembuhkan, tapi dapat dikontrol dengan pengobatan."
+    },
+    {
+        question: "Apakah seseorang bisa terkena penyakit menular seksual lebih dari sekali?",
+        answer: "Ya, meskipun sudah pernah sembuh dari penyakit menular seksual tertentu, seseorang tetap bisa terinfeksi kembali jika melakukan hubungan seksual yang tidak aman."
+    },
+    {
+        question: "Apakah remaja bisa terkena penyakit menular seksual?",
+        answer: "Ya, remaja yang sudah aktif secara seksual memiliki risiko yang sama untuk tertular penyakit menular seksual jika tidak melakukan hubungan seksual yang aman."
+    },
+    {
+        question: "Apa yang harus dilakukan jika merasa terkena penyakit menular seksual?",
+        answer: "Segera periksakan diri ke dokter atau layanan kesehatan untuk diagnosis dan pengobatan. Jangan melakukan hubungan seksual sampai pengobatan selesai dan infeksi sembuh."
+    },
+    {
+        question: "Apa itu HIV dan bagaimana cara penularannya?",
+        answer: "HIV (Human Immunodeficiency Virus) adalah virus yang menyerang sistem kekebalan tubuh. Penularannya melalui cairan tubuh seperti darah, air mani, cairan vagina, dan ASI, biasanya melalui hubungan seksual tanpa kondom, jarum suntik, atau dari ibu ke bayi."
+    },
+    {
+        question: "Apa bedanya HIV dan AIDS?",
+        answer: "HIV adalah virusnya, sedangkan AIDS (Acquired Immunodeficiency Syndrome) adalah kondisi tahap akhir dari infeksi HIV ketika sistem imun sudah sangat lemah dan tidak bisa melawan infeksi lain."
+    },
+    {
+        question: "Apakah herpes genital bisa disembuhkan?",
+        answer: "Herpes genital tidak bisa disembuhkan, tapi bisa dikontrol dengan pengobatan antivirus untuk mengurangi gejala dan risiko penularan."
+    },
+    {
+        question: "Apa itu HPV dan kenapa penting untuk divaksinasi?",
+        answer: "HPV (Human Papillomavirus) adalah virus yang bisa menyebabkan kutil kelamin dan kanker serviks. Vaksinasi HPV penting untuk mencegah infeksi dan komplikasi serius, terutama pada wanita."
+    },
+    {
+        question: "Siapa saja yang sebaiknya menjalani tes penyakit menular seksual secara rutin?",
+        answer: "Orang yang aktif secara seksual, memiliki pasangan lebih dari satu, atau berganti-ganti pasangan disarankan untuk rutin menjalani tes penyakit menular seksual, minimal setahun sekali."
+    },
+    {
+        question: "Apakah penggunaan kondom 100% mencegah penyakit menular seksual?",
+        answer: "Kondom sangat efektif mengurangi risiko penyakit menular seksual, tapi tidak 100% mencegah, karena beberapa infeksi seperti HPV atau herpes bisa menular melalui kontak kulit yang tidak tertutup kondom."
+    },
+    {
+        question: "Apa itu sifilis dan bagaimana gejalanya?",
+        answer: "Sifilis adalah infeksi bakteri yang ditandai dengan luka kecil di area genital atau mulut, ruam kulit, dan jika tidak diobati bisa merusak organ dalam tubuh. Gejalanya sering muncul bertahap."
+    },
+    {
+        question: "Berapa lama penyakit menular seksual mulai menunjukkan gejala setelah tertular?",
+        answer: "Tergantung jenis penyakit menular seksual-nya, bisa dalam hitungan hari hingga minggu. Misalnya, klamidia bisa muncul dalam 1–3 minggu, sementara HIV bisa tidak bergejala selama bertahun-tahun."
+    },
+    {
+        question: "Apakah bisa terkena penyakit menular seksual meskipun hanya sekali berhubungan seksual?",
+        answer: "Ya, satu kali hubungan seksual tanpa pelindung sudah cukup untuk menularkan penyakit menular seksual jika salah satu pasangan terinfeksi."
+    },
+    {
+        question: "Apakah oral seks juga bisa menularkan penyakit menular seksual?",
+        answer: "Ya, beberapa penyakit menular seksual seperti gonore, sifilis, herpes, dan HPV bisa ditularkan melalui oral seks."
+    },
+    {
+        question: "Bagaimana cara mengetahui apakah seseorang terkena penyakit menular seksual?",
+        answer: "Cara paling akurat adalah dengan tes laboratorium, seperti tes darah, urine, atau swab dari area genital, tergantung jenis penyakit menular seksual yang dicurigai."
+    },
+    {
+        question: "Apakah penyakit menular seksual bisa memengaruhi kesuburan?",
+        answer: "Ya, penyakit menular seksual seperti klamidia dan gonore yang tidak diobati dapat menyebabkan komplikasi seperti radang panggul dan infertilitas (kemandulan)."
+    },
+    {
+        question: "Apakah wanita lebih rentan terkena penyakit menular seksual dibanding pria?",
+        answer: "Secara biologis, wanita memang lebih mudah terinfeksi penyakit menular seksual karena struktur organ reproduksi yang lebih terbuka dan rentan."
+    },
+    {
+        question: "Bisakah wanita hamil jika terkena penyakit menular seksual?",
+        answer: "Ya, wanita tetap bisa hamil meski terkena penyakit menular seksual. Namun, penyakit menular seksual dapat membahayakan kehamilan dan bayi jika tidak ditangani."
+    },
+    {
+        question: "Apakah penyakit menular seksual bisa dicegah dengan vaksin?",
+        answer: "Beberapa penyakit menular seksual bisa dicegah dengan vaksin, seperti HPV dan hepatitis B. Namun, sebagian besar lainnya perlu dicegah melalui perilaku seksual yang aman."
+    },
+    {
+        question: "Apa itu trikomoniasis?",
+        answer: "Trikomoniasis adalah infeksi menular seksual yang disebabkan oleh parasit *Trichomonas vaginalis*, dengan gejala seperti keputihan berbau busuk, gatal, dan nyeri saat buang air kecil."
+    },
+    {
+        question: "Apa itu keputihan abnormal dan apakah selalu berarti penyakit menular seksual?",
+        answer: "Keputihan abnormal bisa berupa bau tidak sedap, warna kehijauan, atau disertai rasa gatal. Ini bisa jadi tanda infeksi, termasuk penyakit menular seksual, tapi bisa juga infeksi jamur atau bakteri biasa."
+    },
+    {
+        question: "Bagaimana cara mengobati penyakit menular seksual yang disebabkan bakteri?",
+        answer: "Dengan antibiotik yang diresepkan oleh dokter. Penting untuk menyelesaikan semua obat meskipun gejala membaik."
+    },
+    {
+        question: "Apakah laki-laki bisa terkena HPV?",
+        answer: "Ya, HPV bisa menyerang laki-laki dan menyebabkan kutil kelamin serta meningkatkan risiko kanker penis atau anus."
+    },
+    {
+        question: "Apakah penyakit menular seksual bisa menular melalui sentuhan atau ciuman biasa?",
+        answer: "Sebagian besar penyakit menular seksual tidak menular melalui sentuhan biasa atau ciuman ringan. Namun, herpes oral dan sifilis bisa menular melalui ciuman jika ada luka terbuka."
+    },
+    {
+        question: "Apa dampak jangka panjang penyakit menular seksual jika tidak diobati?",
+        answer: "penyakit menular seksual yang tidak diobati dapat menyebabkan kemandulan, komplikasi kehamilan, kanker, infeksi kronis, bahkan kematian dalam kasus HIV."
+    },
+    {
+        question: "Apakah penyakit menular seksual bisa menyerang orang yang belum pernah berhubungan seksual?",
+        answer: "Kemungkinan sangat kecil, tapi bisa saja tertular melalui transfusi darah, penggunaan jarum suntik bersama, atau penularan dari ibu ke bayi."
+    },
+    {
+        question: "Apa itu VCT dalam konteks penyakit menular seksual?",
+        answer: "VCT (Voluntary Counseling and Testing) adalah layanan konseling dan tes HIV secara sukarela, rahasia, dan dengan dukungan psikologis."
+    },
+    {
+        question: "Apakah pria bisa menjadi pembawa penyakit menular seksual tanpa menunjukkan gejala?",
+        answer: "Ya, pria bisa membawa dan menularkan penyakit menular seksual tanpa mengalami gejala apa pun, terutama untuk klamidia dan HPV."
+    },
+    {
+        question: "Bagaimana mendukung pasangan yang terkena penyakit menular seksual?",
+        answer: "Bersikap terbuka, tidak menghakimi, menemani dalam proses pengobatan, dan mengikuti anjuran dokter bersama-sama sangat penting untuk mendukung pasangan."
+    },
+    {
+        question: "Apakah penyakit menular seksual bisa menyebabkan kanker?",
+        answer: "Beberapa penyakit menular seksual seperti HPV bisa menyebabkan kanker serviks, anus, penis, atau tenggorokan jika tidak tertangani."
+    },
+    {
+        question: "Apa itu infeksi menular seksual rekuren?",
+        answer: "Adalah infeksi yang muncul berulang setelah sebelumnya sembuh, misalnya herpes yang bisa kambuh berkali-kali karena virus tetap tinggal dalam tubuh."
+    },
+    {
+        question: "Bagaimana mengurangi stigma terhadap penderita penyakit menular seksual?",
+        answer: "Dengan edukasi, empati, dan menghindari penyebaran informasi keliru tentang penyakit menular seksual. Perlakuan adil sangat penting untuk kesehatan mental penderita."
+    },
+    {
+        question: "Apakah penyakit menular seksual hanya menyerang orang yang sering berganti pasangan?",
+        answer: "Tidak selalu. Bahkan satu kali hubungan seksual tanpa pelindung dengan pasangan yang terinfeksi sudah bisa menularkan penyakit menular seksual."
+    },
+    {
+        question: "Mengapa penting melakukan skrining penyakit menular seksual sebelum menikah?",
+        answer: "Untuk memastikan kedua calon pasangan sehat, mencegah penularan, dan menjaga kesehatan reproduksi serta calon keturunan di masa depan."
+    }
+];
+function runIndexing() {
+    return __awaiter(this, void 0, void 0, function () {
+        var client, db, collection, embeddings, docs, err_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    client = new mongodb_1.MongoClient(MONGODB_URI);
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 5, 6, 8]);
+                    return [4 /*yield*/, client.connect()];
+                case 2:
+                    _a.sent();
+                    db = client.db(DB_NAME);
+                    collection = db.collection(COLLECTION_NAME);
+                    return [4 /*yield*/, collection.deleteMany({})];
+                case 3:
+                    _a.sent(); // Kosongkan dulu
+                    embeddings = new google_genai_1.GoogleGenerativeAIEmbeddings({
+                        apiKey: GEMINI_API_KEY,
+                        modelName: "embedding-001",
+                    });
+                    docs = QA_DATA.flatMap(function (item) {
+                        var _a;
+                        var questions = (_a = item.variants) !== null && _a !== void 0 ? _a : [item.question];
+                        return questions.map(function (q) {
+                            var _a;
+                            var cleanedQuestion = cleanText(q);
+                            return {
+                                pageContent: "Q: ".concat(cleanedQuestion, "\nA: ").concat(item.answer),
+                                metadata: {
+                                    question: item.question,
+                                    formattedAnswer: (_a = item.formattedAnswer) !== null && _a !== void 0 ? _a : item.answer,
+                                },
+                            };
+                        });
+                    });
+                    return [4 /*yield*/, mongodb_atlas_1.MongoDBAtlasVectorSearch.fromDocuments(docs, embeddings, {
+                            collection: collection,
+                            indexName: "vector_index",
+                            textKey: "pageContent",
+                            embeddingKey: "embedding",
+                        })];
+                case 4:
+                    _a.sent();
+                    console.log("✅ Indexing selesai");
+                    return [3 /*break*/, 8];
+                case 5:
+                    err_1 = _a.sent();
+                    console.error("❌ Gagal indexing:", err_1);
+                    return [3 /*break*/, 8];
+                case 6: return [4 /*yield*/, client.close()];
+                case 7:
+                    _a.sent();
+                    return [7 /*endfinally*/];
+                case 8: return [2 /*return*/];
+            }
+        });
+    });
+}
+runIndexing();
