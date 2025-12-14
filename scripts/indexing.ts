@@ -1260,7 +1260,6 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Pengobatan penyakit menular seksual (Penyakit Menular Seksual) tergantung pada jenis infeksi yang diderita. Beberapa Penyakit Menular Seksual dapat disembuhkan dengan antibiotik, sementara lainnya memerlukan perawatan jangka panjang. Umumnya, langkah-langkah pengobatan meliputi:\n\n🔹 Konsultasi ke dokter atau klinik kesehatan seksual  \n🔹 Melakukan tes untuk memastikan jenis Penyakit Menular Seksual  \n🔹 Mengikuti resep obat dari dokter (seperti antibiotik atau antivirus)  \n🔹 Menyelesaikan seluruh dosis obat meskipun gejala sudah hilang  \n🔹 Tidak berhubungan seksual hingga pengobatan selesai dan dinyatakan sembuh",
     formattedAnswer: "Pengobatan Penyakit Menular Seksual: 1. Konsultasi dokter, 2. Tes untuk diagnosis, 3. Minum obat sesuai resep (antibiotik/antivirus) sampai tuntas, 4. Tidak berhubungan seks selama pengobatan.",
-    category: null
   },
   {
     question: "Apakah Penyakit Menular Seksual bisa sembuh sendiri?",
@@ -1273,7 +1272,6 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Tidak semua Penyakit Menular Seksual bisa sembuh sendiri. Beberapa infeksi seperti klamidia atau gonore bisa memburuk jika tidak diobati. Bahkan Penyakit Menular Seksual yang tampak sembuh bisa tetap aktif di dalam tubuh dan menimbulkan komplikasi serius seperti:\n\n⚠️ Infertilitas  \n⚠️ Infeksi panggul  \n⚠️ Risiko penularan ke orang lain  \n⚠️ Penyakit kronis seperti HIV\n\nOleh karena itu, penting untuk segera memeriksakan diri dan mendapatkan pengobatan yang tepat.",
     formattedAnswer: "TIDAK. Kebanyakan Penyakit Menular Seksual tidak sembuh sendiri dan bisa jadi lebih parah, menyebabkan kemandulan, nyeri kronis, atau meningkatkan risiko HIV. Selalu obati.",
-    category: null
   },
   {
     question: "risiko obat Penyakit Menular Seksual tanpa diagnosa?",
@@ -1286,7 +1284,6 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Beberapa obat untuk mengatasi gejala Penyakit Menular Seksual tersedia bebas, namun **pengobatan utama untuk Penyakit Menular Seksual memerlukan diagnosis dan resep dari dokter**. Mengobati sendiri tanpa mengetahui jenis infeksinya bisa menyebabkan:\n\n❌ Penyakit tidak sembuh  \n❌ Efek samping obat yang salah  \n❌ Penyebaran infeksi ke orang lain\n\nSelalu konsultasikan ke tenaga medis profesional sebelum membeli atau mengonsumsi obat Penyakit Menular Seksual.",
     formattedAnswer: "TIDAK DISARANKAN. Pengobatan Penyakit Menular Seksual membutuhkan diagnosis pasti oleh dokter. Obat yang salah bisa sebabkan resistensi antibiotik dan komplikasi.",
-    category: null
   },
   {
     question: "Apakah Penyakit Menular Seksual bisa sembuh total?",
@@ -1299,7 +1296,6 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Beberapa Penyakit Menular Seksual bisa sembuh total, terutama yang disebabkan oleh bakteri seperti:\n\n✅ Klamidia  \n✅ Gonore  \n✅ Sifilis (jika ditangani sejak dini)\n\nNamun, ada juga Penyakit Menular Seksual yang tidak bisa sembuh total tetapi dapat dikontrol, seperti:\n\n🔸 HIV  \n🔸 Herpes genital  \n🔸 HPV\n\nPengobatan dan manajemen jangka panjang dapat membantu penderita hidup sehat dan menurunkan risiko penularan.",
     formattedAnswer: "Penyakit Menular Seksual bakteri (seperti klamidia, gonore, sifilis) bisa disembuhkan total. Penyakit Menular Seksual virus (seperti HIV, herpes, HPV) tidak bisa disembuhkan tetapi bisa dikendalikan.",
-    category: null
   },
   {
     question: "Apakah saya harus berhenti berhubungan seksual selama pengobatan?",
@@ -1312,7 +1308,6 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, **sangat disarankan untuk tidak berhubungan seksual selama proses pengobatan Penyakit Menular Seksual**. Hal ini untuk mencegah:\n\n🚫 Penularan ke pasangan  \n🚫 Infeksi ulang (reinfection)  \n🚫 Gangguan proses penyembuhan\n\nTunggulah hingga dinyatakan sembuh oleh dokter sebelum kembali berhubungan seksual.",
     formattedAnswer: "YA, mutlak. Hindari semua jenis hubungan seksual hingga pengobatan tuntas dan dokter menyatakan Anda sembuh. Pasangan juga harus diobati.",
-    category: null
   },
   {
     question: "Bagaimana cara mencegah tertular Penyakit Menular Seksual?",
@@ -1325,7 +1320,6 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "🔹 Gunakan kondom setiap berhubungan seks\n🔹 Hindari berganti pasangan\n🔹 Rutin tes Penyakit Menular Seksual bersama pasangan\n🔹 Jaga kebersihan alat kelamin",
     formattedAnswer: "Pencegahan: 1. Gunakan kondom lateks secara konsisten & benar. 2. Setia pada satu pasangan. 3. Skrining Penyakit Menular Seksual rutin. 4. Vaksinasi (HPV, Hepatitis B).",
-    category: null
   },
   {
     question: "Apakah vaksin bisa mencegah Penyakit Menular Seksual?",
@@ -1338,7 +1332,6 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "✅ Ya, tapi hanya untuk jenis tertentu (contoh: HPV dan Hepatitis B). Tidak semua Penyakit Menular Seksual bisa dicegah dengan vaksin.",
     formattedAnswer: "Ya, untuk Penyakit Menular Seksual tertentu. Vaksin HPV cegah kanker serviks & kutil kelamin. Vaksin Hepatitis B cegah hepatitis B. Tidak ada vaksin untuk Penyakit Menular Seksual lain seperti HIV/herpes.",
-    category: null
   },
   {
     question: "Seberapa efektif kondom dalam mencegah Penyakit Menular Seksual?",
@@ -1351,7 +1344,6 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "⚡ Efektifitas 98% jika digunakan dengan benar. Namun tidak 100% aman karena bisa robek atau terlepas.",
     formattedAnswer: "Sangat efektif (>98%) jika digunakan dengan benar, konsisten, dan dari awal hingga akhir hubungan. Tidak melindungi area kulit yang tidak tertutup.",
-    category: null
   },
   {
     question: "Apakah saya masih bisa tertular meskipun pasangan saya tidak punya gejala?",
@@ -1364,7 +1356,6 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "⚠️ YA! Banyak Penyakit Menular Seksual yang tidak menunjukkan gejala (asimtomatik) tapi tetap menular.",
     formattedAnswer: "YA, sangat mungkin. Banyak Penyakit Menular Seksual (seperti klamidia, HPV, herpes) sering tanpa gejala tetapi sangat menular.",
-    category: null
   },
   {
     question: "Apakah saya perlu rutin tes Penyakit Menular Seksual jika tidak berganti pasangan?",
@@ -1377,7 +1368,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "🔍 Disarankan, terutama jika:\n- Pasangan punya riwayat Penyakit Menular Seksual\n- Ada gejala tidak biasa\n- Sebelum menikah/hamil\n- Setiap 6-12 bulan untuk skrining rutin",
     formattedAnswer: "Ya, dianjurkan. Skrining rutin (setahun sekali) penting bahkan dalam hubungan monogami, apalagi sebelum kehamilan atau jika ada gejala.",
-    category: null
+
   },
   {
     question: "Apakah Penyakit Menular Seksual bisa memengaruhi kehamilan?",
@@ -1390,7 +1381,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, beberapa jenis Penyakit Menular Seksual dapat memengaruhi kehamilan dan membahayakan ibu maupun janin. Infeksi seperti sifilis, klamidia, dan gonore dapat menyebabkan komplikasi seperti:\n\n🔹 Keguguran\n🔹 Kelahiran prematur\n🔹 Infeksi pada bayi saat persalinan\n🔹 Berat badan lahir rendah",
     formattedAnswer: "Ya, sangat bisa. Penyakit Menular Seksual dapat menyebabkan keguguran, kelahiran prematur, berat badan lahir rendah, dan infeksi serius pada bayi.",
-    category: null
+
   },
   {
     question: "Apakah Penyakit Menular Seksual bisa ditularkan ke bayi?",
@@ -1403,7 +1394,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, beberapa Penyakit Menular Seksual bisa ditularkan dari ibu ke bayi selama kehamilan, saat persalinan, atau melalui ASI. Penularan ini disebut juga transmisi vertikal. Contohnya:\n\n🔹 HIV\n🔹 Sifilis\n🔹 Hepatitis B\n🔹 Herpes simpleks\n🔹 Klamidia dan gonore (saat lahir melalui jalan lahir)",
     formattedAnswer: "Ya, disebut transmisi vertikal. HIV, sifilis, hepatitis B, herpes, klamidia, dan gonore dapat menular ke bayi selama hamil, persalinan, atau menyusui.",
-    category: null
+
   },
   {
     question: "Apakah ibu hamil bisa melakukan pengobatan Penyakit Menular Seksual?",
@@ -1416,7 +1407,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Bisa. Banyak jenis Penyakit Menular Seksual dapat diobati selama kehamilan dengan obat yang aman untuk ibu dan janin. Sangat penting untuk segera berkonsultasi ke dokter agar mendapatkan penanganan yang tepat dan mencegah komplikasi pada bayi.",
     formattedAnswer: "Bisa dan harus! Banyak obat Penyakit Menular Seksual yang aman untuk ibu hamil. Pengobatan tepat waktu melindungi ibu dan bayi dari komplikasi serius.",
-    category: null
+
   },
   {
     question: "Apakah wanita hamil harus tes Penyakit Menular Seksual?",
@@ -1429,7 +1420,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, tes Penyakit Menular Seksual sangat dianjurkan bagi wanita hamil, terutama pada trimester pertama. Ini penting untuk:\n\n🔹 Mengetahui infeksi sejak dini\n🔹 Mencegah penularan ke janin\n🔹 Memberikan pengobatan lebih cepat\n\nPemeriksaan biasanya mencakup HIV, sifilis, hepatitis B, dan klamidia.",
     formattedAnswer: "Ya, sangat dianjurkan (biasanya di trimester pertama). Skrining untuk HIV, sifilis, hepatitis B, dan klamidia adalah standar.",
-    category: null
+
   },
   {
     question: "Bagaimana cara memberi tahu pasangan bahwa saya punya Penyakit Menular Seksual?",
@@ -1442,7 +1433,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "💬 Komunikasikan dengan jujur dan terbuka, pilih waktu yang tepat, siapkan informasi tentang Penyakit Menular Seksual, dan tawarkan solusi bersama.",
     formattedAnswer: "1. Pilih waktu & tempat tenang. 2. Gunakan bahasa yang jelas & jujur. 3. Siapkan informasi faktual. 4. Tawarkan solusi (tes & pengobatan bersama). 5. Bersiaplah untuk berbagai reaksi.",
-    category: null
+
   },
   {
     question: "Apakah saya tetap bisa menikah jika punya HIV?",
@@ -1455,7 +1446,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "✅ Ya, dengan pengobatan ARV yang tepat, risiko penularan bisa diminimalkan. Penting untuk diskusi terbuka dengan pasangan dan dokter.",
     formattedAnswer: "Ya, pasti bisa. Dengan pengobatan ARV yang rutin sehingga viral load tidak terdeteksi (U=U), risiko penularan ke pasangan hampir nol.",
-    category: null
+
   },
   {
     question: "Bagaimana cara menjelaskan ke pasangan soal pentingnya tes Penyakit Menular Seksual?",
@@ -1468,7 +1459,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "📢 Tekankan bahwa tes Penyakit Menular Seksual adalah: \n- 🛡️ Bentuk perlindungan bersama \n- ❤️ Bukti komitmen pada kesehatan pasangan \n- 🔍 Deteksi dini = pengobatan lebih mudah",
     formattedAnswer: "Jelaskan bahwa tes bersama adalah: 1. Bentuk tanggung jawab & cinta kepada pasangan. 2. Untuk ketenangan pikiran bersama. 3. Deteksi dini membuat pengobatan lebih mudah & murah.",
-    category: null
+
   },
   {
     question: "Apakah remaja juga bisa terkena Penyakit Menular Seksual?",
@@ -1481,7 +1472,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, remaja (terutama perempuan) bisa mengalami Penyakit Menular Seksual (Pre-Menstrual Syndrome) setelah mulai menstruasi. 🩸",
     formattedAnswer: "Pertanyaan ambigu. 'Penyakit Menular Seksual' bisa berarti Pre-Menstrual Syndrome (gejala sebelum haid) yang dialami remaja putri. Atau 'Penyakit Menular Seksual' yang bisa dialami remaja yang sudah aktif secara seksual.",
-    category: null
+
   },
   {
     question: "Apakah penting memberikan edukasi Penyakit Menular Seksual sejak usia muda?",
@@ -1494,7 +1485,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Sangat penting! Edukasi dini membantu remaja: 💡\n- Memahami perubahan tubuh\n- Mengelola gejala dengan baik\n- Menghindari mitos/miskonsepsi\n- Mempersiapkan diri secara mental",
     formattedAnswer: "Sangat penting! Edukasi dini melindungi remaja dari: 1. Risiko Penyakit Menular Seksual & kehamilan tidak direncanakan. 2. Misinformasi. 3. Stigma. 4. Membantu mereka membuat keputusan sehat.",
-    category: null
+
   },
   {
     question: "Bagaimana cara menjelaskan Penyakit Menular Seksual kepada anak remaja?",
@@ -1507,7 +1498,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Gunakan pendekatan sederhana dan empati: 🌸\n1. Jelaskan bahwa Penyakit Menular Seksual wajar terjadi sebelum menstruasi\n2. Sebut gejala umum (mood swing, kram)\n3. Tekankan bahwa ini bukan penyakit\n4. Ajarkan cara meredakan gejala (istirahat, kompres hangat)\n5. Dorong untuk konsultasi jika gejala berat",
     formattedAnswer: "1. Gunakan bahasa yang jelas & ilmiah. 2. Jelaskan secara faktual tentang cara penularan & pencegahan. 3. Tekankan pentingnya komunikasi terbuka dengan orang tua/dokter. 4. Hilangkan rasa malu & rasa bersalah. 5. Sediakan sumber informasi yang terpercaya.",
-    category: null
+
   },
   {
     question: "Apakah Penyakit Menular Seksual hanya bisa menular lewat seks bebas?",
@@ -1520,7 +1511,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Tidak. Penyakit Menular Seksual bisa menular melalui berbagai jenis aktivitas seksual, termasuk:\n    \n🔹 Hubungan seksual dengan pasangan tetap yang terinfeksi  \n🔹 Seks oral atau anal  \n🔹 Berbagi jarum suntik  \n🔹 Dari ibu ke bayi saat melahirkan atau menyusui\n\nJadi, tidak hanya seks bebas yang berisiko menularkan Penyakit Menular Seksual.",
     formattedAnswer: "TIDAK. Penyakit Menular Seksual bisa menular pada siapapun yang aktif seksual, bahkan dalam hubungan monogami, jika salah satu pasangan terinfeksi. Juga melalui jarum suntik dan dari ibu ke bayi.",
-    category: null
+
   },
   {
     question: "Apakah orang yang tampak sehat pasti bebas dari Penyakit Menular Seksual?",
@@ -1533,7 +1524,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Tidak. Banyak orang dengan Penyakit Menular Seksual tidak menunjukkan gejala apa pun, terutama di tahap awal. Mereka bisa terlihat sehat tetapi tetap bisa menularkan penyakitnya. Oleh karena itu, tes rutin sangat penting untuk mengetahui status kesehatan seksual.",
     formattedAnswer: "TIDAK. Banyak Penyakit Menular Seksual tidak bergejala (asimtomatik). Seseorang bisa terlihat sangat sehat tetapi membawa dan menularkan Penyakit Menular Seksual. Tes adalah satu-satunya cara pasti.",
-    category: null
+
   },
   {
     question: "Apakah Penyakit Menular Seksual hanya dialami oleh pekerja seks?",
@@ -1546,7 +1537,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Tidak. Siapa pun yang aktif secara seksual bisa terkena Penyakit Menular Seksual, tidak peduli status sosial, profesi, atau jumlah pasangan. Risiko meningkat jika:\n\n🔹 Tidak menggunakan kondom  \n🔹 Sering berganti pasangan  \n🔹 Tidak pernah tes Penyakit Menular Seksual  \n🔹 Berhubungan seksual dengan orang yang tidak diketahui status kesehatannya\n\nJadi, Penyakit Menular Seksual bukan hanya masalah pekerja seks, tapi bisa dialami oleh siapa saja.",
     formattedAnswer: "TIDAK. Siapa pun yang pernah berhubungan seksual bisa terkena Penyakit Menular Seksual, terlepas dari jenis kelamin, orientasi seksual, usia, atau profesi. Ini masalah kesehatan, bukan moral.",
-    category: null
+
   },
   {
     question: "Apakah pria tidak perlu khawatir soal Penyakit Menular Seksual?",
@@ -1559,7 +1550,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Pria tetap perlu waspada terhadap Penyakit Menular Seksual. Meski gejalanya bisa lebih ringan atau tidak terasa, pria tetap bisa:\n\n🔹 Menularkan Penyakit Menular Seksual ke pasangan  \n🔹 Mengalami komplikasi kesehatan (misalnya infertilitas, nyeri, atau infeksi lainnya)  \n🔹 Membawa virus tanpa sadar\n\nPemeriksaan rutin dan edukasi sangat penting untuk pria juga.",
     formattedAnswer: "SANGAT PERLU. Pria bisa tertular, menularkan, dan mengalami komplikasi Penyakit Menular Seksual (seperti kemandulan, kanker). Pria sering tanpa gejala jadi bisa menjadi 'silent carrier'.",
-    category: null
+
   },
   {
     question: "Apa itu penyakit menular seksual (Penyakit Menular Seksual)?",
@@ -1572,7 +1563,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Penyakit menular seksual (Penyakit Menular Seksual) adalah infeksi yang ditularkan melalui hubungan seksual, termasuk hubungan vaginal, anal, dan oral. Penyakit Menular Seksual dapat disebabkan oleh bakteri, virus, atau parasit.",
     formattedAnswer: "Penyakit Menular Seksual (Penyakit Menular Seksual) atau IMS (Infeksi Menular Seksual) adalah infeksi yang ditularkan terutama melalui hubungan seksual.",
-    category: null
+
   },
   {
     question: "Apa saja jenis-jenis Penyakit Menular Seksual yang umum terjadi?",
@@ -1585,7 +1576,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Jenis-jenis Penyakit Menular Seksual yang umum meliputi HIV/AIDS, sifilis, gonore, klamidia, herpes genital, HPV, dan trikomoniasis.",
     formattedAnswer: "Penyakit Menular Seksual Umum: Klamidia, Gonore (Kencing Nanah), Sifilis (Raja Singa), Herpes Genital, HIV/AIDS, HPV (Kutil Kelamin & Kanker), Trikomoniasis.",
-    category: null
+
   },
   {
     question: "apa saja jenis-jenis Penyakit Menular Seksual yang umum terjadi?",
@@ -1598,7 +1589,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Jenis-jenis Penyakit Menular Seksual yang umum meliputi HIV/AIDS, sifilis, gonore, klamidia, herpes genital, HPV, dan trikomoniasis.",
     formattedAnswer: "Penyakit Menular Seksual Umum: Klamidia, Gonore, Sifilis, Herpes Genital, HIV, HPV, Trikomoniasis, Hepatitis B.",
-    category: null
+
   },
   {
     question: "jenis-jenis Penyakit Menular Seksual",
@@ -1611,7 +1602,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Jenis-jenis Penyakit Menular Seksual yang umum meliputi HIV/AIDS, sifilis, gonore, klamidia, herpes genital, HPV, dan trikomoniasis.",
     formattedAnswer: "Jenis Penyakit Menular Seksual: Bakteri (Klamidia, Gonore, Sifilis). Virus (HIV, Herpes, HPV, Hepatitis B). Parasit (Trikomoniasis).",
-    category: null
+
   },
   {
     question: "jenis-jenis Penyakit Menular Seksual apa saja?",
@@ -1624,7 +1615,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Jenis-jenis Penyakit Menular Seksual yang umum meliputi HIV/AIDS, sifilis, gonore, klamidia, herpes genital, HPV, dan trikomoniasis.",
     formattedAnswer: "Jenis Penyakit Menular Seksual: 1. Klamidia 2. Gonore 3. Sifilis 4. Herpes Genital 5. HIV 6. HPV 7. Trikomoniasis 8. Hepatitis B.",
-    category: null
+
   },
   {
     question: "Bagaimana cara penularan Penyakit Menular Seksual?",
@@ -1637,7 +1628,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Penyakit Menular Seksual dapat ditularkan melalui hubungan seksual tanpa kondom, penggunaan jarum suntik yang tidak steril, transfusi darah yang terkontaminasi, atau dari ibu ke bayi selama kehamilan atau persalinan.",
     formattedAnswer: "Penularan: Seks vaginal/anal/oral tanpa kondom, berbagi jarum suntik, transfusi darah terinfeksi, dari ibu ke bayi (hamil, persalinan, menyusui).",
-    category: null
+
   },
   {
     question: "Gejala umum penyakit menular seksual?",
@@ -1663,7 +1654,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, beberapa Penyakit Menular Seksual seperti klamidia dan HPV sering kali tidak menunjukkan gejala, sehingga seseorang bisa menularkannya tanpa menyadarinya.",
     formattedAnswer: "Ya, sangat sering. Klamidia, Gonore, HPV, Herpes, dan HIV seringkali tidak menunjukkan gejala sama sekali (asimtomatik).",
-    category: null
+
   },
   {
     question: "Bagaimana cara mencegah Penyakit Menular Seksual?",
@@ -1676,7 +1667,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Pencegahan Penyakit Menular Seksual dapat dilakukan dengan menggunakan kondom saat berhubungan seksual, setia pada satu pasangan, tidak berbagi jarum suntik, dan menjalani tes Penyakit Menular Seksual secara rutin.",
     formattedAnswer: "Pencegahan: 1. Kondom (paling efektif). 2. Vaksinasi (HPV, Hep B). 3. Setia pada 1 pasangan. 4. Tidak berbagi jarum. 5. Skrining rutin. 6. PrEP untuk HIV.",
-    category: null
+
   },
   {
     question: "Apakah semua Penyakit Menular Seksual bisa disembuhkan?",
@@ -1689,7 +1680,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Penyakit Menular Seksual yang disebabkan oleh bakteri seperti klamidia, gonore, dan sifilis bisa disembuhkan dengan antibiotik. Namun Penyakit Menular Seksual yang disebabkan oleh virus seperti HIV dan herpes tidak bisa disembuhkan, tapi dapat dikontrol dengan pengobatan.",
     formattedAnswer: "Tidak semua. Penyakit Menular Seksual bakteri (klamidia, gonore, sifilis) bisa disembuhkan. Penyakit Menular Seksual virus (HIV, herpes, HPV) tidak bisa disembuhkan tetapi bisa dikendalikan.",
-    category: null
+
   },
   {
     question: "Apakah seseorang bisa terkena Penyakit Menular Seksual lebih dari sekali?",
@@ -1702,7 +1693,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, meskipun sudah pernah sembuh dari Penyakit Menular Seksual tertentu, seseorang tetap bisa terinfeksi kembali jika melakukan hubungan seksual yang tidak aman.",
     formattedAnswer: "Ya. Sembuh dari Penyakit Menular Seksual (terutama bakteri) tidak memberikan kekebalan. Anda bisa terinfeksi ulang jenis yang sama lagi.",
-    category: null
+
   },
   {
     question: "Apakah remaja bisa terkena Penyakit Menular Seksual?",
@@ -1715,7 +1706,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, remaja yang sudah aktif secara seksual memiliki risiko yang sama untuk tertular Penyakit Menular Seksual jika tidak melakukan hubungan seksual yang aman.",
     formattedAnswer: "Ya. Remaja yang aktif secara seksual memiliki risiko tertular Penyakit Menular Seksual yang sama seperti orang dewasa, bahkan lebih rentan secara biologis dan perilaku.",
-    category: null
+
   },
   {
     question: "Apa yang harus dilakukan jika merasa terkena Penyakit Menular Seksual?",
@@ -1728,7 +1719,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Segera periksakan diri ke dokter atau layanan kesehatan untuk diagnosis dan pengobatan. Jangan melakukan hubungan seksual sampai pengobatan selesai dan infeksi sembuh.",
     formattedAnswer: "1. Segera ke dokter/klinik kesehatan seksual. 2. Jangan berhubungan seks. 3. Jangan mengobati sendiri. 4. Ajak pasangan untuk tes dan berobat. 5. Ikuti pengobatan hingga tuntas.",
-    category: null
+
   },
   {
     question: "Apa itu HIV dan bagaimana cara penularannya?",
@@ -1741,7 +1732,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "HIV (Human Immunodeficiency Virus) adalah virus yang menyerang sistem kekebalan tubuh. Penularannya melalui cairan tubuh seperti darah, air mani, cairan vagina, dan ASI, biasanya melalui hubungan seksual tanpa kondom, jarum suntik, atau dari ibu ke bayi.",
     formattedAnswer: "HIV: Virus yang menyerang sistem kekebalan tubuh. Penularan: Seks tanpa kondom, berbagi jarum, dari ibu ke bayi.",
-    category: null
+
   },
   {
     question: "Apa bedanya HIV dan AIDS?",
@@ -1754,7 +1745,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "HIV adalah virusnya, sedangkan AIDS (Acquired Immunodeficiency Syndrome) adalah kondisi tahap akhir dari infeksi HIV ketika sistem imun sudah sangat lemah dan tidak bisa melawan infeksi lain.",
     formattedAnswer: "HIV adalah virus penyebabnya. AIDS adalah sindrom/keadaan ketika sistem imun sudah sangat rusak akibat HIV dan muncul penyakit oportunistik.",
-    category: null
+
   },
   {
     question: "Apakah herpes genital bisa disembuhkan?",
@@ -1767,7 +1758,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Herpes genital tidak bisa disembuhkan, tapi bisa dikontrol dengan pengobatan antivirus untuk mengurangi gejala dan risiko penularan.",
     formattedAnswer: "Tidak bisa disembuhkan total. Virusnya menetap seumur hidup. Obat antivirus dapat mengontrol gejala dan mengurangi kekambuhan & penularan.",
-    category: null
+
   },
   {
     question: "Apa itu HPV dan kenapa penting untuk divaksinasi?",
@@ -1780,7 +1771,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "HPV (Human Papillomavirus) adalah virus yang bisa menyebabkan kutil kelamin dan kanker serviks. Vaksinasi HPV penting untuk mencegah infeksi dan komplikasi serius, terutama pada wanita.",
     formattedAnswer: "HPV: Virus penyebab kutil kelamin dan kanker (serviks, anus, tenggorokan). Vaksinasi penting untuk mencegah infeksi HPV dan kanker terkait.",
-    category: null
+
   },
   {
     question: "Siapa saja yang sebaiknya menjalani tes Penyakit Menular Seksual secara rutin?",
@@ -1793,7 +1784,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Orang yang aktif secara seksual, memiliki pasangan lebih dari satu, atau berganti-ganti pasangan disarankan untuk rutin menjalani tes Penyakit Menular Seksual, minimal setahun sekali.",
     formattedAnswer: "Yang perlu skrining rutin: Yang aktif seksual & punya faktor risiko (pasangan baru, banyak pasangan, tidak pakai kondom, pria seks pria). Ibu hamil. Setiap orang yang merasa perlu.",
-    category: null
+
   },
   {
     question: "Apakah penggunaan kondom 100% mencegah Penyakit Menular Seksual?",
@@ -1806,7 +1797,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Kondom sangat efektif mengurangi risiko Penyakit Menular Seksual, tapi tidak 100% mencegah, karena beberapa infeksi seperti HPV atau herpes bisa menular melalui kontak kulit yang tidak tertutup kondom.",
     formattedAnswer: "Tidak 100%. Sangat efektif untuk Penyakit Menular Seksual yang menular melalui cairan (HIV, gonore, klamidia). Kurang efektif untuk yang menular melalui kulit (HPV, herpes).",
-    category: null
+
   },
   {
     question: "Apa itu sifilis dan bagaimana gejalanya?",
@@ -1819,7 +1810,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Sifilis adalah infeksi bakteri yang ditandai dengan luka kecil di area genital atau mulut, ruam kulit, dan jika tidak diobati bisa merusak organ dalam tubuh. Gejalanya sering muncul bertahap.",
     formattedAnswer: "Sifilis: Penyakit Menular Seksual bakteri yang berjalan dalam stadium. Gejala: Luka tanpa sakit (stadium 1), ruam (stadium 2), tanpa gejala (laten), kerusakan organ (stadium 3).",
-    category: null
+
   },
   {
     question: "Berapa lama Penyakit Menular Seksual mulai menunjukkan gejala setelah tertular?",
@@ -1832,7 +1823,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Tergantung jenis Penyakit Menular Seksual-nya, bisa dalam hitungan hari hingga minggu. Misalnya, klamidia bisa muncul dalam 1–3 minggu, sementara HIV bisa tidak bergejala selama bertahun-tahun.",
     formattedAnswer: "Bervariasi: Klamidia/Gonore: 1-3 minggu. Sifilis: 3 minggu-3 bulan. Herpes: 2-12 hari. HIV: Gejala awal 2-4 minggu, tapi bisa tanpa gejala tahunan.",
-    category: null
+
   },
   {
     question: "Apakah bisa terkena Penyakit Menular Seksual meskipun hanya sekali berhubungan seksual?",
@@ -1845,7 +1836,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, satu kali hubungan seksual tanpa pelindung sudah cukup untuk menularkan Penyakit Menular Seksual jika salah satu pasangan terinfeksi.",
     formattedAnswer: "Ya, bisa. Hanya butuh SATU KALI hubungan seks tanpa kondom dengan orang yang terinfeksi untuk tertular Penyakit Menular Seksual.",
-    category: null
+
   },
   {
     question: "Apakah oral seks juga bisa menularkan Penyakit Menular Seksual?",
@@ -1858,7 +1849,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, beberapa Penyakit Menular Seksual seperti gonore, sifilis, herpes, dan HPV bisa ditularkan melalui oral seks.",
     formattedAnswer: "Ya. Gonore, Sifilis, Herpes, HPV, dan Klamidia dapat menular melalui seks oral, menyebabkan infeksi di tenggorokan atau mulut.",
-    category: null
+
   },
   {
     question: "Bagaimana cara mengetahui apakah seseorang terkena Penyakit Menular Seksual?",
@@ -1871,7 +1862,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Cara paling akurat adalah dengan tes laboratorium, seperti tes darah, urine, atau swab dari area genital, tergantung jenis Penyakit Menular Seksual yang dicurigai.",
     formattedAnswer: "Satu-satunya cara pasti adalah dengan TES di fasilitas kesehatan: tes darah, urine, atau usap (swab) pada area yang dicurigai.",
-    category: null
+
   },
   {
     question: "Apakah Penyakit Menular Seksual bisa memengaruhi kesuburan?",
@@ -1884,7 +1875,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, Penyakit Menular Seksual seperti klamidia dan gonore yang tidak diobati dapat menyebabkan komplikasi seperti radang panggul dan infertilitas (kemandulan).",
     formattedAnswer: "Ya, sangat bisa. Klamidia dan Gonore yang tidak diobati adalah penyebab utama penyakit radang panggul (PID) dan kemandulan pada wanita.",
-    category: null
+
   },
   {
     question: "Apakah wanita lebih rentan terkena Penyakit Menular Seksual dibanding pria?",
@@ -1897,7 +1888,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Secara biologis, wanita memang lebih mudah terinfeksi Penyakit Menular Seksual karena struktur organ reproduksi yang lebih terbuka dan rentan.",
     formattedAnswer: "Secara biologis, YA. Area genital wanita lebih luas dan lembab, sehingga lebih rentan terpapar dan terinfeksi pathogen Penyakit Menular Seksual.",
-    category: null
+
   },
   {
     question: "Bisakah wanita hamil jika terkena Penyakit Menular Seksual?",
@@ -1910,7 +1901,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, wanita tetap bisa hamil meski terkena Penyakit Menular Seksual. Namun, Penyakit Menular Seksual dapat membahayakan kehamilan dan bayi jika tidak ditangani.",
     formattedAnswer: "Bisa. Tapi Penyakit Menular Seksual dapat mempersulit kehamilan, menyebabkan kehamilan ektopik, atau membahayakan janin jika tidak diobati.",
-    category: null
+
   },
   {
     question: "Apakah Penyakit Menular Seksual bisa dicegah dengan vaksin?",
@@ -1923,7 +1914,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Beberapa Penyakit Menular Seksual bisa dicegah dengan vaksin, seperti HPV dan hepatitis B. Namun, sebagian besar lainnya perlu dicegah melalui perilaku seksual yang aman.",
     formattedAnswer: "Beberapa. Vaksin HPV (cegah kutil kelamin & kanker). Vaksin Hepatitis B (cegah hepatitis B). Tidak ada vaksin untuk HIV, herpes, sifilis, dll.",
-    category: null
+
   },
   {
     question: "Apa itu trikomoniasis?",
@@ -1936,7 +1927,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Trikomoniasis adalah infeksi menular seksual yang disebabkan oleh parasit *Trichomonas vaginalis*, dengan gejala seperti keputihan berbau busuk, gatal, dan nyeri saat buang air kecil.",
     formattedAnswer: "Trikomoniasis: Penyakit Menular Seksual parasit yang menyebabkan keputihan berbau busuk, hijau/kuning berbusa, gatal, dan nyeri pada wanita. Pria sering tanpa gejala.",
-    category: null
+
   },
   {
     question: "Apa itu keputihan abnormal dan apakah selalu berarti Penyakit Menular Seksual?",
@@ -1949,7 +1940,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Keputihan abnormal bisa berupa bau tidak sedap, warna kehijauan, atau disertai rasa gatal. Ini bisa jadi tanda infeksi, termasuk Penyakit Menular Seksual, tapi bisa juga infeksi jamur atau bakteri biasa.",
     formattedAnswer: "Keputihan abnormal: Warna tidak jernih/putih (kuning/hijau), konsistensi tidak normal, berbau, disertai gatal/nyeri. Bisa akibat Penyakit Menular Seksual (Trikomoniasis, Gonore) atau non-Penyakit Menular Seksual (Vaginosis Bakterial, Infeksi Jamur).",
-    category: null
+
   },
   {
     question: "Bagaimana cara mengobati Penyakit Menular Seksual yang disebabkan bakteri?",
@@ -1962,7 +1953,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Dengan antibiotik yang diresepkan oleh dokter. Penting untuk menyelesaikan semua obat meskipun gejala membaik.",
     formattedAnswer: "Dengan antibiotik yang diresepkan dokter. Sangat penting untuk menghabiskan semua obat meskipun gejala sudah membaik, untuk mencegah kekambuhan & resistensi.",
-    category: null
+
   },
   {
     question: "Apakah laki-laki bisa terkena HPV?",
@@ -1975,7 +1966,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, HPV bisa menyerang laki-laki dan menyebabkan kutil kelamin serta meningkatkan risiko kanker penis atau anus.",
     formattedAnswer: "Ya. Pria bisa terkena HPV, menyebabkan kutil kelamin dan meningkatkan risiko kanker anus, penis, dan tenggorokan.",
-    category: null
+
   },
   {
     question: "Apakah Penyakit Menular Seksual bisa menular melalui sentuhan atau ciuman biasa?",
@@ -1988,7 +1979,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Sebagian besar Penyakit Menular Seksual tidak menular melalui sentuhan biasa atau ciuman ringan. Namun, herpes oral dan sifilis bisa menular melalui ciuman jika ada luka terbuka.",
     formattedAnswer: "Umumnya TIDAK. Penyakit Menular Seksual tidak menular melalui pelukan, berjabat tangan, berbagi makanan, atau dudukan toilet. Herpes mulut dan sifilis bisa menular melalui ciuman dalam.",
-    category: null
+
   },
   {
     question: "Apa dampak jangka panjang Penyakit Menular Seksual jika tidak diobati?",
@@ -2001,7 +1992,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Penyakit Menular Seksual yang tidak diobati dapat menyebabkan kemandulan, komplikasi kehamilan, kanker, infeksi kronis, bahkan kematian dalam kasus HIV.",
     formattedAnswer: "Dampak Jangka Panjang: Kemandulan, nyeri panggul kronis, kehamilan ektopik, kanker, kerusakan organ (otak, jantung), meningkatkan risiko HIV, kematian.",
-    category: null
+
   },
   {
     question: "Apakah Penyakit Menular Seksual bisa menyerang orang yang belum pernah berhubungan seksual?",
@@ -2014,7 +2005,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Kemungkinan sangat kecil, tapi bisa saja tertular melalui transfusi darah, penggunaan jarum suntik bersama, atau penularan dari ibu ke bayi.",
     formattedAnswer: "Sangat jarang, tapi mungkin melalui: 1. Transfusi darah yang terkontaminasi. 2. Berbagi jarum suntik. 3. Dari ibu ke bayi selama hamil/persalinan.",
-    category: null
+
   },
   {
     question: "Apa itu VCT dalam konteks Penyakit Menular Seksual?",
@@ -2027,7 +2018,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "VCT (Voluntary Counseling and Testing) adalah layanan konseling dan tes HIV secara sukarela, rahasia, dan dengan dukungan psikologis.",
     formattedAnswer: "VCT (Voluntary Counseling and Testing): Layanan Konseling dan Testing HIV sukarela, rahasia, dan didukung konselor.",
-    category: null
+
   },
   {
     question: "Apakah pria bisa menjadi pembawa Penyakit Menular Seksual tanpa menunjukkan gejala?",
@@ -2040,7 +2031,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Ya, pria bisa membawa dan menularkan Penyakit Menular Seksual tanpa mengalami gejala apa pun, terutama untuk klamidia dan HPV.",
     formattedAnswer: "Ya, sangat mungkin. Pria sering menjadi 'silent carrier' untuk Penyakit Menular Seksual seperti Klamidia, Gonore, HPV, dan Herpes tanpa menunjukkan gejala.",
-    category: null
+
   },
   {
     question: "Bagaimana mendukung pasangan yang terkena Penyakit Menular Seksual?",
@@ -2053,7 +2044,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Bersikap terbuka, tidak menghakimi, menemani dalam proses pengobatan, dan mengikuti anjuran dokter bersama-sama sangat penting untuk mendukung pasangan.",
     formattedAnswer: "1. Jangan menyalahkan atau menghakimi. 2. Dukung secara emosional. 3. Ikut serta dalam pengobatan (tes & obati bersama). 4. Edukasi diri sendiri. 5. Komunikasikan dengan terbuka.",
-    category: null
+
   },
   {
     question: "Apakah Penyakit Menular Seksual bisa menyebabkan kanker?",
@@ -2066,7 +2057,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Beberapa Penyakit Menular Seksual seperti HPV bisa menyebabkan kanker serviks, anus, penis, atau tenggorokan jika tidak tertangani.",
     formattedAnswer: "Ya. HPV adalah penyebab utama kanker serviks, anus, penis, vulva, vagina, dan tenggorokan. Hepatitis B & C dapat menyebabkan kanker hati.",
-    category: null
+
   },
   {
     question: "Apa itu infeksi menular seksual rekuren?",
@@ -2079,7 +2070,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Adalah infeksi yang muncul berulang setelah sebelumnya sembuh, misalnya herpes yang bisa kambuh berkali-kali karena virus tetap tinggal dalam tubuh.",
     formattedAnswer: "IMS Rekuren: Infeksi yang kambuh kembali. Contoh: Herpes (karena virus dormant) atau infeksi ulang karena pasangan tidak diobati (klamidia/gonore).",
-    category: null
+
   },
   {
     question: "Bagaimana mengurangi stigma terhadap penderita Penyakit Menular Seksual?",
@@ -2092,7 +2083,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Dengan edukasi, empati, dan menghindari penyebaran informasi keliru tentang Penyakit Menular Seksual. Perlakuan adil sangat penting untuk kesehatan mental penderita.",
     formattedAnswer: "1. Edukasi bahwa Penyakit Menular Seksual adalah masalah kesehatan, bukan aib. 2. Gunakan bahasa yang tidak menyalahkan. 3. Dorong tes & pengobatan terbuka. 4. Dukung kesehatan mental penderitanya.",
-    category: null
+
   },
   {
     question: "Apakah Penyakit Menular Seksual hanya menyerang orang yang sering berganti pasangan?",
@@ -2105,7 +2096,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Tidak selalu. Bahkan satu kali hubungan seksual tanpa pelindung dengan pasangan yang terinfeksi sudah bisa menularkan Penyakit Menular Seksual.",
     formattedAnswer: "TIDAK. Siapa pun bisa terkena Penyakit Menular Seksual, bahkan dari satu kali hubungan seks atau dalam hubungan monogami jika pasangan terinfeksi.",
-    category: null
+
   },
   {
     question: "Mengapa penting melakukan skrining Penyakit Menular Seksual sebelum menikah?",
@@ -2118,7 +2109,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Untuk memastikan kedua calon pasangan sehat, mencegah penularan, dan menjaga kesehatan reproduksi serta calon keturunan di masa depan.",
     formattedAnswer: "Penting untuk: 1. Melindungi kesehatan pasangan. 2. Mencegah penularan. 3. Merencanakan kehamilan yang sehat. 4. Membangun kepercayaan & komunikasi terbuka sejak awal.",
-    category: null
+
   },
    {
     question: "Apakah Penyakit Menular Seksual bisa SEMBUH?",
@@ -2129,7 +2120,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Beberapa PMS bisa disembuhkan (misalnya gonore, sifilis, klamidia) dengan obat dari dokter. Tapi ada juga yang tidak bisa sembuh total (seperti HIV, herpes, HPV), hanya bisa dikendalikan.",
     formattedAnswer: "Beberapa PMS bisa disembuhkan (misalnya gonore, sifilis, klamidia) dengan obat dari dokter. Tapi ada juga yang tidak bisa sembuh total (seperti HIV, herpes, HPV), hanya bisa dikendalikan.",
-    category: null
+
   },
      {
     question: "Apakah Penyakit Menular Seksual bisa menular lewat berpegangan tangan?",
@@ -2140,7 +2131,7 @@ Beberapa Penyakit Menular Seksual seperti herpes atau HPV dapat menular melalui 
     ],
     answer: "Tidak. Penyakit Menular Seksual tidak menular lewat sentuhan biasa seperti berjabat tangan.",
     formattedAnswer: "Tidak. PMS tidak menular lewat sentuhan biasa seperti berjabat tangan.",
-    category: null
+
   }
 ];
 
