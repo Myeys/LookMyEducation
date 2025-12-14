@@ -7,7 +7,6 @@ import Script from "next/script";
 import { AuthProvider } from "../app/context/auth-context";
 import ChatbotWrapper from "../component/ChatbotWrapper";
 import CurhatWrapper from "../component/CurhatWrapper";
-import SessionWrapper from "../component/SessionWrapper";
 
 // Gunakan next/font/google (rekomendasi Next.js)
 import { Roboto_Mono } from "next/font/google";

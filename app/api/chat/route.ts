@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       answer: match.answer,
     });
 
-  } catch (err) {
+  } catch (_err) {
     return NextResponse.json({
       answer: "Terjadi kesalahan pada server lokal."
     });
